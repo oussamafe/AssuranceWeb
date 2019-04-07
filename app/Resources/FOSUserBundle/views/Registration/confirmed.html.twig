@@ -1,0 +1,11 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <div class="alert alert-success" role="alert">
+        <div class="alert-icon"><i class="flaticon-warning"></i></div>
+        <div class="alert-text">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</div>
+    </div>
+{% endblock fos_user_content %}

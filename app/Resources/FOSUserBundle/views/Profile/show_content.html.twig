@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="kt-login__signin">
+    <div class="kt-login__head">
+        <h3 class="kt-login__title">Profile</h3>
+    </div>
+    <div class="fos_user_user_show" align="middle">
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    </div>
+    <br>
+    <div class="kt-login__actions" align ="middle">
+        <a href="{{ path("fos_user_profile_edit") }}" class="btn btn-brand btn-elevate kt-login__btn-primary">Modifier Détails</a>
+        <a href="{{ path("fos_user_change_password") }}" class="btn btn-brand btn-elevate kt-login__btn-primary">Modifier Mot de Passe</a>
+    </div>
+</div>

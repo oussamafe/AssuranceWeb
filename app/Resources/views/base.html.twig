@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Garantia{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700"
+              rel="stylesheet">
+
+        <!-- Bootstrap CSS File -->
+        <link href="{{ asset('front/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="{{ asset('front/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/lib/animate/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="{{ asset('front/img/favicon.ico') }}"/>
+    {% endblock %}
+</head>
+<body>
+{% block redirect %}
+{% endblock %}
+{% block header %}
+    <header id="header">
+        <div id="topbar">
+            <div class="container">
+                <div class="social-links">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% for role in app.user.roles %}
+                    {% if  role == "ROLE_ADMIN" %}
+                        <script>
+                            window.location = '{{ path('backend') }}';
+                        </script>
+                    {% endif %}
+                        {% endfor %}
+                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'| trans({}, 'FOSUserBundle') }}
+                            <i class="fa fa-sign-in"></i>
+                        </a>
+                    {% endif %}
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="logo float-left">
+                <a href="#header" class="scrollto"><img src="{{ asset('front/img/logof.png') }}" alt=""
+                                                        class="img-fluid"></a>
+            </div>
+
+            <nav class="main-nav float-right d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="#intro">Accueil</a></li>
+                    <li><a href="#about">Actualités</a></li>
+                    <li><a href="#services">Assurances</a></li>
+                    <li><a href="#portfolio">Devis</a></li>
+                    <li><a href="#team">Evenements</a></li>
+                    <li>
+                        {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }} <i class="fa fa-sign-in"></i></a>
+                        {% endif %}
+                        {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a href="{{ path('fos_user_profile_show') }}">Profile <i class="fa fa-id-card"></i></a>
+                        {% endif %}
+
+                    </li>
+                    <li>
+                        {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a href="{{ path('fos_user_registration_register') }}" >Créer Compte <i class="fa fa-user-plus"></i></a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav><!-- .main-nav -->
+
+        </div>
+    </header>
+
+{% endblock %}
+{% block test %}
+{% endblock %}
+
+{% block content %}
+    <section id="intro1" class="clearfix">
+    </section><!-- #intro -->
+{% endblock %}
+{% block footer %}
+
+    <footer id="footer" class="section-bg">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong>The Crows</strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}
+
+{% block javascripts %}
+    <!-- JavaScript Libraries -->
+    <script src="{{ asset('front/lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('front/lib/jquery/jquery-migrate.min.js') }}"></script>
+    <script src="{{ asset('front/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('front/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('front/lib/mobile-nav/mobile-nav.js') }}"></script>
+    <script src="{{ asset('front/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('front/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('front/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('front/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('front/lib/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('front/lib/lightbox/js/lightbox.min.js') }}"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="{{ asset('front/contactform/contactform.js') }}"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="{{ asset('front/js/main.js') }}"></script>
+{% endblock %}
+</body>
+</html>

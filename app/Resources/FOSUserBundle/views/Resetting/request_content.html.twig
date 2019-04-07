@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+    {% if  is_granted("IS_AUTHENTICATED_FULLY") %}
+        <script>
+            window.location.replace("{{ path("homepage") }}");
+        </script>
+    {% endif %}
+<div class="kt-login__signin">
+    <div class="kt-login__head">
+        <h3 class="kt-login__title">Mot de Passe Oublié</h3>
+    </div>
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="kt-form">
+
+    <div class="form-input">
+        <input class="form-control"  type="text" id="username" name="username" required="required" placeholder="{{ 'resetting.request.username'|trans }}" />
+    </div>
+    <div class="kt-login__actions">
+        <input class="btn btn-brand btn-elevate kt-login__btn-primary" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+    </div>
+</form>
+</div>
