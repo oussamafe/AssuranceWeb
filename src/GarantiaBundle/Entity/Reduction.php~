@@ -1,0 +1,57 @@
+<?php
+
+namespace GarantiaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reduction
+ *
+ * @ORM\Table(name="reduction", indexes={@ORM\Index(name="fk_assurance", columns={"id_assurance"})})
+ * @ORM\Entity
+ */
+class Reduction
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="taux", type="integer", nullable=false)
+     */
+    private $taux;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_debut", type="date", nullable=false)
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_fin", type="date", nullable=false)
+     */
+    private $dateFin;
+
+    /**
+     * @var \TypeAssurance
+     *
+     * @ORM\ManyToOne(targetEntity="TypeAssurance")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_assurance", referencedColumnName="id")
+     * })
+     */
+    private $idAssurance;
+
+
+}
+

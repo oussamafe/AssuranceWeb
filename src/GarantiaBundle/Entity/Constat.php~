@@ -1,0 +1,208 @@
+<?php
+
+namespace GarantiaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Constat
+ *
+ * @ORM\Table(name="constat")
+ * @ORM\Entity
+ */
+class Constat
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomA", type="string", length=255, nullable=false)
+     */
+    private $noma;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenomA", type="string", length=255, nullable=false)
+     */
+    private $prenoma;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresseA", type="string", length=255, nullable=false)
+     */
+    private $adressea;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="permisA", type="integer", nullable=false)
+     */
+    private $permisa;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="delivreA", type="date", nullable=false)
+     */
+    private $delivrea;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marqueA", type="string", length=255, nullable=false)
+     */
+    private $marquea;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="immatriculationA", type="string", length=255, nullable=false)
+     */
+    private $immatriculationa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chocA", type="string", length=11, nullable=false)
+     */
+    private $choca;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chocB", type="string", length=11, nullable=false)
+     */
+    private $chocb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance1", type="string", length=255, nullable=false)
+     */
+    private $circonstance1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance2", type="string", length=255, nullable=false)
+     */
+    private $circonstance2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance3", type="string", length=255, nullable=false)
+     */
+    private $circonstance3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance4", type="string", length=255, nullable=false)
+     */
+    private $circonstance4;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance5", type="string", length=255, nullable=false)
+     */
+    private $circonstance5;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance6", type="string", length=255, nullable=false)
+     */
+    private $circonstance6;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance7", type="string", length=255, nullable=false)
+     */
+    private $circonstance7;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance8", type="string", length=255, nullable=false)
+     */
+    private $circonstance8;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstance9", type="string", length=255, nullable=false)
+     */
+    private $circonstance9;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="circonstanceautre", type="string", length=255, nullable=false)
+     */
+    private $circonstanceautre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomB", type="string", length=255, nullable=false)
+     */
+    private $nomb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenomB", type="string", length=255, nullable=false)
+     */
+    private $prenomb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresseB", type="string", length=255, nullable=false)
+     */
+    private $adresseb;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="permisB", type="integer", nullable=false)
+     */
+    private $permisb;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="delivreB", type="date", nullable=false)
+     */
+    private $delivreb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marqueB", type="string", length=255, nullable=false)
+     */
+    private $marqueb;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="immatriculationB", type="integer", nullable=false)
+     */
+    private $immatriculationb;
+
+
+}
+

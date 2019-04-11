@@ -25,3 +25,7 @@ hwi_oauth_login:
 
 facebook_login:
     path: /connect/check-facebook
+
+oneup_uploader:
+    resource: .
+    type: uploader

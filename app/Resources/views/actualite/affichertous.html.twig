@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block test %}
+{% endblock %}
+{% block content %}
+    <section id="intro1" class="clearfix">
+    </section>
+    <div class="container">
+
+        {% for actu in actualite %}
+
+
+            <div class="row feature-item mt-5 pt-5">
+                <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                    <img src="{{ asset('uploads/'~actu.image~'') }}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0" style="visibility: visible; animation-name: fadeInUp;">
+                    <h2><b>{{ actu.titre }}</b></h2>
+                    <h5 style="font-size:13.28px;" > <i class="fa fa-clock-o"></i> Publié le {{ actu.datePublication|localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") }}</h5>
+                    </section>
+                    <p>
+                        {{ actu.description }}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

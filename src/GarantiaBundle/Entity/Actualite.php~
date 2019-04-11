@@ -1,0 +1,64 @@
+<?php
+
+namespace GarantiaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Actualite
+ *
+ * @ORM\Table(name="actualite", indexes={@ORM\Index(name="fk_cat_actu", columns={"id_cat"})})
+ * @ORM\Entity
+ */
+class Actualite
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255, nullable=false)
+     */
+    private $titre;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_publication", type="date", nullable=false)
+     */
+    private $datePublication;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     */
+    private $image;
+
+    /**
+     * @var \CategorieActu
+     *
+     * @ORM\ManyToOne(targetEntity="CategorieActu")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_cat", referencedColumnName="id")
+     * })
+     */
+    private $idCat;
+
+
+}
+

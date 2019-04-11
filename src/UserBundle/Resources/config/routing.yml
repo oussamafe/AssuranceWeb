@@ -1,3 +1,22 @@
 user_homepage:
     path:     /
     defaults: { _controller: UserBundle:Default:index }
+
+showAll:
+    path:     /admin/showAllusers
+    defaults: { _controller: UserBundle:Default:ShowAllUsers }
+showClients:
+    path:     /admin/showClients
+    defaults: { _controller: UserBundle:Default:ShowClients }
+promoteUserExpert:
+    path:     /admin/PromoteUserExpert
+    defaults: { _controller: UserBundle:Default:PromoteUserExpert }
+promoteUserEmploye:
+    path:     /admin/PromoteUserEmploye
+    defaults: { _controller: UserBundle:Default:PromoteUserEmploye }
+showExpert:
+    path:     /admin/ShowExpert
+    defaults: { _controller: UserBundle:Default:ShowExpert }
+ShowEmploye:
+    path:     /admin/ShowEmploye
+    defaults: { _controller: UserBundle:Default:ShowEmploye }

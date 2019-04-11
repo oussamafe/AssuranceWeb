@@ -1,0 +1,24 @@
+categorieactu_index:
+    path:     /
+    defaults: { _controller: "GarantiaBundle:CategorieActu:index" }
+    methods:  GET
+
+categorieactu_show:
+    path:     /{id}/show
+    defaults: { _controller: "GarantiaBundle:CategorieActu:show" }
+    methods:  GET
+
+categorieactu_new:
+    path:     /new
+    defaults: { _controller: "GarantiaBundle:CategorieActu:new" }
+    methods:  [GET, POST]
+
+categorieactu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GarantiaBundle:CategorieActu:edit" }
+    methods:  [GET, POST]
+
+categorieactu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GarantiaBundle:CategorieActu:delete" }
+    methods:  DELETE

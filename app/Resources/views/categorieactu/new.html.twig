@@ -1,0 +1,56 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block supcontent %}
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">
+                Catégories Des Actualités </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+            <div class="kt-subheader__breadcrumbs">
+                <a class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                <a class="kt-subheader__breadcrumbs-link">
+                    Ajout </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+
+    <div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
+        <div class="kt-portlet__head kt-portlet__head--lg" style="">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Formulaire D'Ajout de Categorie
+                </h3>
+            </div>
+            <div class="kt-portlet__head-toolbar">
+                <a href="{{ path('categorieactu_index') }}" class="btn btn-clean kt-margin-r-10">
+                    <i class="la la-arrow-left"></i>
+                    <span class="kt-hidden-mobile">Retour</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="kt-portlet__body">
+            {{ form_start(form , {'attr': {'class': 'kt-form'}}) }}
+            <div class="row">
+                <div class="col-xl-2"></div>
+                <div class="col-xl-8">
+                    <div class="kt-section kt-section--first">
+                        <div class="kt-section__body">
+                            <div class="form-group row">
+                                {{ form_label(form.nomCategorie ,null , {'label_attr': {'class': 'col-3 col-form-label'}}) }}
+                                <div class="col-9">
+                                {{ form_widget(form.nomCategorie , {'attr': {'class': 'form-control' , 'placeholder': 'Nom categorie'}}) }}
+                                </div>
+                            </div>
+                            {{ form_widget(form) }}
+                            <input type="submit" class="btn btn-brand" value="Créer" />
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

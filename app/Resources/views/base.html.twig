@@ -39,7 +39,7 @@
                         </script>
                     {% endif %}
                         {% endfor %}
-                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        {{ 'layout.logged_in_as'|trans ({'%username%': app.user.username}, 'FOSUserBundle') }} |
                         <a href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'| trans({}, 'FOSUserBundle') }}
                             <i class="fa fa-sign-in"></i>
@@ -63,19 +63,30 @@
             <nav class="main-nav float-right d-none d-lg-block">
                 <ul>
                     <li class="active"><a href="#intro">Accueil</a></li>
-                    <li><a href="#about">Actualités</a></li>
-                    <li><a href="#services">Assurances</a></li>
+
+
+                    <li class="drop-down"><a href="#">Actualités</a>
+                        <ul>
+                            <li><a href="{{ path('show_front_all') }}">Toutes Les Actualités</a></li>
+                            {% block test %}
+                            {% for cat in categorieActu %}
+                            <li><a href="{{ path('show_front',{'id':cat.id }) }}">{{ cat.nomCategorie }}</a></li>
+                            {% endfor %}
+                            {% endblock %}
+                        </ul>
+                    </li>
                     <li><a href="#portfolio">Devis</a></li>
                     <li><a href="#team">Evenements</a></li>
-                    <li>
+
                         {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }} <i class="fa fa-sign-in"></i></a>
+                        <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }} <i class="fa fa-sign-in"></i></a></li>
                         {% endif %}
                         {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <a href="{{ path('fos_user_profile_show') }}">Profile <i class="fa fa-id-card"></i></a>
+                            <li><a href="">Mes Incidents</a></li>
+                            <li><a href="{{ path('fos_user_profile_show') }}">Profile <i class="fa fa-id-card"></i></a></li>
                         {% endif %}
 
-                    </li>
+
                     <li>
                         {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <a href="{{ path('fos_user_registration_register') }}" >Créer Compte <i class="fa fa-user-plus"></i></a>
@@ -88,8 +99,7 @@
     </header>
 
 {% endblock %}
-{% block test %}
-{% endblock %}
+
 
 {% block content %}
     <section id="intro1" class="clearfix">

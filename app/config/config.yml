@@ -119,3 +119,16 @@ fos_user:
     from_email:
         address: "support@garantia.tn"
         sender_name: "Garantia"
+oneup_uploader:
+  orphanage:
+    maxage: 86400
+    directory: %kernel.cache_dir%/uploader/orphanage
+  mappings:
+    gallery:
+      frontend: dropzone # or any uploader you use in the frontend
+      root_folder: true
+      use_orphanage: true
+    albums:
+      frontend: dropzone # or any uploader you use in the frontend
+      root_folder: true
+      use_orphanage: true

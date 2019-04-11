@@ -1,3 +1,15 @@
+garantia_categorieactu:
+    resource: "@GarantiaBundle/Resources/config/routing/categorieactu.yml"
+    prefix:   /admin/categorieactu
+garantia_actu:
+    resource: "@GarantiaBundle/Resources/config/routing/actualite.yml"
+    prefix:   /admin/actualite
 garantia_homepage:
     path:     /
     defaults: { _controller: GarantiaBundle:Default:index }
+show_front_all:
+    path:     /touslesarticles
+    defaults: { _controller: GarantiaBundle:Actualite:affichertous }
+show_front:
+    path:     /articles
+    defaults: { _controller: GarantiaBundle:Actualite:afficherunarticle }

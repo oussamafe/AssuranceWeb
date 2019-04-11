@@ -34,6 +34,11 @@ class User extends BaseUser
 
     protected $first_name;
 
+    /** @ORM\Column(name="ip_address", type="string", length=255, nullable=true)
+     */
+
+    protected $ip;
+
     /**
      * @ORM\Column(name="nom", type="string", length=255)
      *
@@ -94,6 +99,18 @@ class User extends BaseUser
         parent::__construct();
         if (empty($this->registerDate)) {
             $this->registerDate = new \DateTime();
+        }
+        if (empty($this->ip)) {
+            $url = 'http://checkip.dyndns.com/';
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HEADER, false);
+            $data = curl_exec($curl);
+            curl_close($curl);
+            preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $data, $m);
+            $externalIp = $m[1];
+            $this->ip = $externalIp;
         }
         // your own logic
     }
@@ -264,5 +281,29 @@ class User extends BaseUser
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Set ip
+     *
+     * @param string $ip
+     *
+     * @return User
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+
+        return $this;
+    }
+
+    /**
+     * Get ip
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
     }
 }

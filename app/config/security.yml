@@ -5,7 +5,9 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_Client:       ROLE_USER
+        ROLE_CLIENT:       ROLE_USER
+        ROLE_EXPERT:       ROLE_ADMIN
+        ROLE_EMPLOYE:       ROLE_ADMIN
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
