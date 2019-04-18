@@ -1,0 +1,51 @@
+{% for publicite in all %}
+    {% if app.user.id == publicite.user.id %}
+
+        <div class="product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="product-thumb row">
+                <div class="image col-xs-12">
+                    <a href="{{ path('publicite_show', { 'idPub': publicite.idPub }) }}">
+                        <img class="image_thumb" src="{{ asset(publicite.image) }}" title="{{ publicite.text }}" alt="{{ publicite.text }}">
+                        <img class="image_thumb_swap" src="{{ asset(publicite.image) }}" title="{{ publicite.text }}" alt="{{ publicite.text }}">
+                    </a>
+
+                </div>
+                <div class="thumb-description col-xs-12">
+                    <div class="caption">
+
+                        <h4><a href="{{ path('publicite_show', { 'idPub': publicite.idPub }) }}">{{ publicite.text }}</a></h4>
+                        <div class="rating no-rating">
+                            <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                            <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        </div>
+
+                        <p class="description">HTC Touch - in High Definition. Watch music videos and streaming content in awe-inspiring high defin..</p>
+                        <div class="price">
+                            {{ publicite.description | raw }}
+                            <span class="price-tax">Ex Tax: $100.00</span> 				</div>
+
+                    </div>
+                    <div class="button-group">
+                        <a href="{{ path('publicite_show', { 'idPub': publicite.idPub }) }}" ><button class="btn-cart " type="button" title="Afficher">
+
+                                <i class="fa fa-shopping-cart"></i><span class="hidden-xs hidden-sm hidden-md">Afficher
+</span></button></a>
+                        <a href="{{ path('publicite_edit', { 'idPub': publicite.idPub }) }}" ><button class="btn-wishlist" title="Modifier" ><i class="fa fa-heart"></i>
+                                <span title="Modifier">Modifier</span>
+                            </button></a>
+                        <a href="{{ path('publicite_delete', {'idPub': publicite.idPub }) }}"><button class="btn-quickview" title="Supprimer" > <i class="fa fa-exchange"></i>
+                                <span title="Supprimer">Supprimer</span>
+                            </button></a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+
