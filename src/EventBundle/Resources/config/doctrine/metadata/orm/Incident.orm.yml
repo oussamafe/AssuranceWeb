@@ -1,0 +1,84 @@
+Incident:
+    type: entity
+    table: incident
+    indexes:
+        fk_id_assurance:
+            columns:
+                - id_assurance
+        fk_client_id:
+            columns:
+                - id_client
+        fk_expert_id:
+            columns:
+                - id_expert
+        fk_id_constat:
+            columns:
+                - id_constat
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_client
+        idAssurance:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_assurance
+        dateIncident:
+            type: date
+            nullable: false
+            column: date_incident
+        image1:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        image2:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        image3:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        commentaire:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        etat:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        idConstat:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_constat
+        idExpert:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_expert
+    lifecycleCallbacks: {  }

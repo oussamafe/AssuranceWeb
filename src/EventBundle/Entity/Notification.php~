@@ -1,0 +1,54 @@
+<?php
+
+namespace RecBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Notification
+ *
+ * @ORM\Table(name="notification", indexes={@ORM\Index(name="fk_idemp", columns={"id_employe"})})
+ * @ORM\Entity
+ */
+class Notification
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sent", type="integer", nullable=false)
+     */
+    private $sent;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_admin", type="integer", nullable=false)
+     */
+    private $idAdmin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_employe", type="integer", nullable=false)
+     */
+    private $idEmploye;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_client", type="integer", nullable=false)
+     */
+    private $idClient;
+
+
+}
+

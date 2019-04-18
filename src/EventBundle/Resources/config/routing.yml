@@ -1,0 +1,23 @@
+rec_homepage:
+    path:     /
+    defaults: { _controller: RecBundle:Default:index }
+_ShowR:
+    path:     /ShowR
+    defaults: { _controller: RecBundle:Reclamation:ShowAll }
+
+_ViewR:
+    path:     /ViewR/{id}
+    defaults: { _controller: RecBundle:Reclamation:ViewRec }
+
+_CreateR:
+    path:     /CreateR
+    defaults: { _controller: RecBundle:Reclamation:CreateRec }
+
+_DeleteR:
+    path:     /DeleteR/{id}
+    defaults: { _controller: RecBundle:Reclamation:DeleteRec }
+
+_EditR:
+    path:     /EditR/{id}
+    defaults: { _controller: RecBundle:Reclamation:EditRec }
+

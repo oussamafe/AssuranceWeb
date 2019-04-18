@@ -1,0 +1,36 @@
+TypeOffre:
+    type: entity
+    table: type_offre
+    indexes:
+        fk_idAgence:
+            columns:
+                - id_agence
+    id:
+        idOffre:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_offre
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomoffre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        idAgence:
+            targetEntity: Agence
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_agence:
+                    referencedColumnName: Id_Agence
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,50 @@
+Disponibilite:
+    type: entity
+    table: disponibilite
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        lundi:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        mardi:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        mercredi:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        jeudi:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        vendredi:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        samedi:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

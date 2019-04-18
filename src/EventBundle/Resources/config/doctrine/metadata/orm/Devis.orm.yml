@@ -1,0 +1,86 @@
+Devis:
+    type: entity
+    table: devis
+    indexes:
+        fk_devis_client:
+            columns:
+                - id_client
+        fk_devis_assurance:
+            columns:
+                - id_assurance
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idAssurance:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_assurance
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+        champ1:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        champ2:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        champ3:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        champ4:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        critere1:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        critere2:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        critere3:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        critere4:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        total:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dateDevis:
+            type: datetime
+            nullable: true
+            column: date_devis
+    lifecycleCallbacks: {  }

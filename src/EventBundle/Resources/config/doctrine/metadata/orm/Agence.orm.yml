@@ -1,0 +1,50 @@
+Agence:
+    type: entity
+    table: agence
+    id:
+        idAgence:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_Agence
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomagence:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: NomAgence
+        localisation:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Localisation
+        description:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Description
+        specialisation:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Specialisation
+        responsable:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Responsable
+    lifecycleCallbacks: {  }

@@ -1,0 +1,54 @@
+<?php
+
+namespace RecBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Participation
+ *
+ * @ORM\Table(name="participation", indexes={@ORM\Index(name="fk_id_event", columns={"id_evenement"}), @ORM\Index(name="fk_id_participant", columns={"id_participant"})})
+ * @ORM\Entity
+ */
+class Participation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_evenement", type="integer", nullable=false)
+     */
+    private $idEvenement;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_participant", type="integer", nullable=false)
+     */
+    private $idParticipant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="QrCode", type="string", length=50, nullable=false)
+     */
+    private $qrcode;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Etat", type="integer", nullable=false)
+     */
+    private $etat;
+
+
+}
+

@@ -1,0 +1,29 @@
+Offre:
+    type: entity
+    table: offre
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        typeAssurance:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: type_assurance
+        dateDebut:
+            type: date
+            nullable: false
+            column: date_debut
+        dateFin:
+            type: date
+            nullable: false
+            column: date_fin
+    lifecycleCallbacks: {  }

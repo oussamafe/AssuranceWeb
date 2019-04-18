@@ -1,0 +1,54 @@
+<?php
+
+namespace RecBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Paiement
+ *
+ * @ORM\Table(name="paiement", indexes={@ORM\Index(name="fk_client_fac", columns={"id_client"}), @ORM\Index(name="fk_devis_fac", columns={"id_devis"})})
+ * @ORM\Entity
+ */
+class Paiement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_client", type="integer", nullable=false)
+     */
+    private $idClient;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_devis", type="integer", nullable=false)
+     */
+    private $idDevis;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="paid", type="integer", nullable=false)
+     */
+    private $paid;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total", type="integer", nullable=false)
+     */
+    private $total;
+
+
+}
+
