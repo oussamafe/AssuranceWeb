@@ -1,0 +1,59 @@
+{% extends "UserBundle::layout1.html.twig" %}
+{% block body %}
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"><a href="{{ path('departement_homepage') }}" title="Go to Home" class="tip-bottom"><i
+                            class="icon-home"></i>Home</a> <a href="{{ path('ajouterDepartement') }}">Départements</a>
+                <a
+                        href="#" class="current">Ajouter Département</a></div>
+            <h1>Ajouter Departemment</h1>
+        </div>
+        <div class="container-fluid">
+            <hr>
+            {{ form_start(form) }}
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget-box">
+                        <div class="widget-title"><span class="icon"> <i class="fa fa-plus-square"></i> </span>
+                            <h5>Ajouter Departement</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+
+                            <div class="control-group">
+
+
+                                <div class="control-group">
+
+                                    <div class="controls">
+                                        <h6>Ajouter un Nom</h6>
+                                        {{ form_widget(form.nom) }}                                    </div>
+                                </div>
+                                <div class="control-group">
+
+                                    <div class="controls">
+                                        <h6>Ajouter une Description</h6>
+                                        {{ form_widget(form.description) }}                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <h6>Ajouter une Image</h6>
+                                    {{ form_widget(form.file) }}  </div>
+                            </div>
+
+                            <div class="form-actions">
+                                {{ form_widget(form.Save) }}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}
