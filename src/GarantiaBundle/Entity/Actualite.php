@@ -59,6 +59,19 @@ class Actualite
      */
     private $idCat;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="front", type="integer", nullable=false)
+     */
+    private $front;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="views", type="integer", nullable=false)
+     */
+    private $views;
 
 
     /**
@@ -191,4 +204,52 @@ class Actualite
         return $this->idCat;
     }
 
+
+    /**
+     * Set front
+     *
+     * @param integer $front
+     *
+     * @return Actualite
+     */
+    public function setFront($front)
+    {
+        $this->front = $front;
+
+        return $this;
+    }
+
+    /**
+     * Get front
+     *
+     * @return integer
+     */
+    public function getFront()
+    {
+        return $this->front;
+    }
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     *
+     * @return Actualite
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
 }

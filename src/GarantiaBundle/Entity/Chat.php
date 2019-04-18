@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Chat
  *
- * @ORM\Table(name="chat")
+ * @ORM\Table(name="chat", indexes={@ORM\Index(name="fk_chat_admin", columns={"id_admin"}), @ORM\Index(name="fk_chat_emp", columns={"id_emp"}) })
  * @ORM\Entity
  */
 class Chat
@@ -21,17 +21,25 @@ class Chat
      */
     private $id;
 
+
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_emp", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_emp", referencedColumnName="id")
+     * })
      */
     private $idEmp;
 
+
     /**
-     * @var integer
+     * @var \FosUser
      *
-     * @ORM\Column(name="id_admin", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_admin", referencedColumnName="id")
+     * })
      */
     private $idAdmin;
 
@@ -41,6 +49,12 @@ class Chat
      * @ORM\Column(name="mgs", type="string", length=255, nullable=false)
      */
     private $mgs;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dest", type="integer", nullable=false)
+     */
+    private $dest;
 
 
 
@@ -52,54 +66,6 @@ class Chat
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set idEmp
-     *
-     * @param integer $idEmp
-     *
-     * @return Chat
-     */
-    public function setIdEmp($idEmp)
-    {
-        $this->idEmp = $idEmp;
-
-        return $this;
-    }
-
-    /**
-     * Get idEmp
-     *
-     * @return integer
-     */
-    public function getIdEmp()
-    {
-        return $this->idEmp;
-    }
-
-    /**
-     * Set idAdmin
-     *
-     * @param integer $idAdmin
-     *
-     * @return Chat
-     */
-    public function setIdAdmin($idAdmin)
-    {
-        $this->idAdmin = $idAdmin;
-
-        return $this;
-    }
-
-    /**
-     * Get idAdmin
-     *
-     * @return integer
-     */
-    public function getIdAdmin()
-    {
-        return $this->idAdmin;
     }
 
     /**
@@ -124,5 +90,77 @@ class Chat
     public function getMgs()
     {
         return $this->mgs;
+    }
+
+    /**
+     * Set dest
+     *
+     * @param integer $dest
+     *
+     * @return Chat
+     */
+    public function setDest($dest)
+    {
+        $this->dest = $dest;
+
+        return $this;
+    }
+
+    /**
+     * Get dest
+     *
+     * @return integer
+     */
+    public function getDest()
+    {
+        return $this->dest;
+    }
+
+    /**
+     * Set idEmp
+     *
+     * @param \UserBundle\Entity\User $idEmp
+     *
+     * @return Chat
+     */
+    public function setIdEmp(\UserBundle\Entity\User $idEmp = null)
+    {
+        $this->idEmp = $idEmp;
+
+        return $this;
+    }
+
+    /**
+     * Get idEmp
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getIdEmp()
+    {
+        return $this->idEmp;
+    }
+
+    /**
+     * Set idAdmin
+     *
+     * @param \UserBundle\Entity\User $idAdmin
+     *
+     * @return Chat
+     */
+    public function setIdAdmin(\UserBundle\Entity\User $idAdmin = null)
+    {
+        $this->idAdmin = $idAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get idAdmin
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getIdAdmin()
+    {
+        return $this->idAdmin;
     }
 }

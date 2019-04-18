@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Rating
  *
- * @ORM\Table(name="rating", indexes={@ORM\Index(name="fk_rating_client", columns={"id_client"})})
+ * @ORM\Table(name="rating", indexes={@ORM\Index(name="fk_rating_client", columns={"id_client"}), @ORM\Index(name="fk_rating_publicite", columns={"id_pub"})    })
  * @ORM\Entity
  */
 class Rating
@@ -37,6 +37,15 @@ class Rating
      * })
      */
     private $idClient;
+    /**
+     * @var \Publicite
+     *
+     * @ORM\ManyToOne(targetEntity="Publicite")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_pub", referencedColumnName="id")
+     * })
+     */
+    private $idPub;
 
 
 
@@ -96,5 +105,29 @@ class Rating
     public function getIdClient()
     {
         return $this->idClient;
+    }
+
+    /**
+     * Set idPub
+     *
+     * @param \GarantiaBundle\Entity\Publicite $idPub
+     *
+     * @return Rating
+     */
+    public function setIdPub(\GarantiaBundle\Entity\Publicite $idPub = null)
+    {
+        $this->idPub = $idPub;
+
+        return $this;
+    }
+
+    /**
+     * Get idPub
+     *
+     * @return \GarantiaBundle\Entity\Publicite
+     */
+    public function getIdPub()
+    {
+        return $this->idPub;
     }
 }
