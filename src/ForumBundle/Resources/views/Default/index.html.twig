@@ -1,0 +1,60 @@
+
+
+{% extends 'base.html.twig' %}
+{% block content %}
+
+
+<div style="margin-top: 150px">
+
+    </div>
+    {% for forum in forums %}
+{% if forum.etat == 1 %}
+        <div class="col-lg-8 left-blog-info text-left">
+            <div class="blog-grid-top">
+                <div class="b-grid-top">
+
+
+
+
+                    <div class="blog_info_left_grid">
+                        <a href="single.html">
+                            <img src="{{   asset('Bundles/AppBundle/images/1.jpg')}}" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <h4>
+                <a href="#">Added :{{ forum.date | date("m/d/Y")  }}  </a>
+                    {% if user.id|number_format != forum.idUser.id|number_format %}
+                        <p> By {{ forum.idUser }}</p>
+
+                {% elseif user.id|number_format == forum.idUser.id|number_format %}
+                    <p>Published by :</p>  Me
+                    {% endif %}
+            </h4>
+            <h4>{{ forum.descriptionF  }} </h4>
+
+            number comments : {{ forum.countComments }}
+            <br>
+            <br>
+            <a href="{{ path('detailsF', { 'id': forum.idF }) }}" class="btn btn-primary">Détails</a>
+
+            {% if user.id|number_format != forum.idUser.id|number_format %}
+
+
+            {% elseif user.id|number_format == forum.idUser.id|number_format %}
+                <a href="{{ path('modifierF', { 'id': forum.idF }) }}" class="btn btn-success">modifier</a>
+                <a href="{{ path('supprimerF', { 'id': forum.idF }) }}" class="btn btn-danger">supprimer</a>
+            {% endif %}
+
+        </div>
+
+        </div>
+        </br>
+{% endif %}
+    {%  endfor %}
+</div>
+
+
+
+{% endblock %}

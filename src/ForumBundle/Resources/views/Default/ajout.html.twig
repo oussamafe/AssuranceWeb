@@ -1,0 +1,45 @@
+
+
+{% extends 'base.html.twig' %}
+{% block content %}
+
+
+
+    <div class="col-lg-8 left-blog-info text-left" style="margin-top: 150px">
+        <div class="blog-grid-top">
+            <div class="b-grid-top">
+                <div class="blog_info_left_grid">
+                    <a href="single.html">
+                        <img src="{{   asset('Bundles/AppBundle/images/1.jpg')}}" class="img-fluid" alt="">
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="comment-top">
+            <h4>You can add a Forum here ...</h4>
+            <div class="comment-bottom">
+                <form method="post">
+
+                    <textarea class="form-control" name="description" placeholder="description here..." required="" minlength="10" maxlength="255"></textarea>
+                    <button type="submit" class="btn btn-danger submit">Ajouter un forum</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
+
+
+

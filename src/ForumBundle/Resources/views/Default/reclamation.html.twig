@@ -1,0 +1,55 @@
+{% extends '@Forum/Default/layout.html.twig' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title %} reclamation {% endblock %}
+
+{% block affichage %}
+
+    <div class="col-lg-8 left-blog-info text-left">
+        <div class="blog-grid-top">
+            <div class="b-grid-top">
+                <div class="blog_info_left_grid">
+                    <a href="single.html">
+                        <img src="{{   asset('Bundles/AppBundle/images/1.jpg')}}" class="img-fluid" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <h3>
+                <a href="single.html">added : {{ forum.date | date }}</a>
+            </h3>
+            <p>Description :{{ forum.descriptionF }}</p>
+        </div>
+
+
+
+        <div class="comment-top">
+            <h4>Are you sure ??!</h4>
+            <div class="comment-bottom">
+                <form method="post">
+
+                    <textarea class="form-control" name="reclamation" placeholder="reclamation here..." required=""></textarea>
+                    <select  class="form-control" name="sujet" required>
+                        <option class="form-control" value="jardinier">Jardinier</option>
+                        <option class="form-control" value="autres">Autres</option>
+                    </select>
+                    <br>
+                    <center> <button type="submit" class="btn btn-danger submit">reclamer</button></center>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+
+{% endblock %}

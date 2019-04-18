@@ -1,0 +1,48 @@
+
+
+{% extends '@Forum/Default/layout.html.twig' %}
+
+{% block head %}
+    {% block title %} reclamations {% endblock %}
+{% endblock %}
+
+{% block affichage %}
+
+
+    {% for rec in reclamations %}
+        <div class="col-lg-8 left-blog-info text-left">
+            <div class="blog-grid-top">
+
+
+                <h4>
+                 Sujet :   {{ rec.sujet  }}  <a href="single.html">Added : {{ rec.dateRec |date }}  </a>
+                </h4>
+                <h4>Description :{{ rec.description  }}   </h4>
+
+                <p>{{ rec.numTel }}</p>
+                <br>
+                <br>
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+{% endfor %}
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+
+{% endblock %}

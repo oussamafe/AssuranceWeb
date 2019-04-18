@@ -1,0 +1,41 @@
+Notification:
+    type: entity
+    table: notification
+    indexes:
+        fk_idemp:
+            columns:
+                - id_employe
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        sent:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        idAdmin:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_admin
+        idEmploye:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_employe
+        idClient:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_client
+    lifecycleCallbacks: {  }

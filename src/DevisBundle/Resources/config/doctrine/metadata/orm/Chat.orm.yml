@@ -1,0 +1,32 @@
+Chat:
+    type: entity
+    table: chat
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idEmp:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_emp
+        idAdmin:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_admin
+        mgs:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
