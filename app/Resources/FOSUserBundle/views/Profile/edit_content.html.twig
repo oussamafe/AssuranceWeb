@@ -35,6 +35,34 @@
         </ul>
         {{ form_widget(form.current_password, {'attr': {'class': 'form-control' , 'placeholder': 'form.current_password'|trans }}) }}
     </div>
+    <div class="form-group">
+        <ul>
+            <li>{{ form_label(form.first_name) }}</li>
+        </ul>
+        {{ form_widget(form.first_name, {'attr': {'class': 'form-control' , 'placeholder': 'Prénom' }}) }}
+    </div>
+    <div class="form-group">
+        <ul>
+            <li>{{ form_label(form.last_name) }}</li>
+        </ul>
+        {{ form_widget(form.last_name, {'attr': {'class': 'form-control' , 'placeholder': 'Nom' }}) }}
+    </div>
+    <div class="form-group">
+        <ul>
+            <li>{{ form_label(form.address) }}</li>
+        </ul>
+        {{ form_widget(form.address, {'attr': {'class': 'form-control' , 'placeholder': 'Adresse' }}) }}
+    </div>
+    <div class="form-group" align="middle">
+        <div class="kt-radio-inline">
+            {% for child in form.gender %}
+
+                <label class="kt-radio kt-radio--brand"> {{ form_label(child) }} {{ form_widget(child)}} <span></span></label>
+
+
+            {% endfor %}
+        </div>
+    </div>
     {{ form_widget(form) }}
     <div class="kt-login__actions">
         <button id="_submit" class="btn btn-brand btn-elevate kt-login__btn-primary" name="_submit" > {{ 'profile.edit.submit'|trans }}</button>

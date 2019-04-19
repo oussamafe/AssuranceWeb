@@ -11,5 +11,214 @@ show_front_all:
     path:     /touslesarticles
     defaults: { _controller: GarantiaBundle:Actualite:affichertous }
 show_front:
-    path:     /articles
+    path:     /article/{id}
     defaults: { _controller: GarantiaBundle:Actualite:afficherunarticle }
+show_categorie_front:
+    path:     /categorie/{id}
+    defaults: { _controller: GarantiaBundle:Actualite:affichercategorie }
+
+show_front_Reclamation:
+    path:     /showreclamation
+    defaults: { _controller: GarantiaBundle:Reclamation:showreclamation }
+_CreateR:
+    path:     /CreateR
+    defaults: { _controller: GarantiaBundle:Reclamation:CreateRec }
+_DeleteR:
+    path:     /DeleteR/{id}
+    defaults: { _controller: GarantiaBundle:Reclamation:DeleteRec }
+
+_EditR:
+    path:     /EditR/{id}
+    defaults: { _controller: GarantiaBundle:Reclamation:EditRec }
+ShowRAdm:
+    path:     /admin/ShowRAdm
+    defaults: { _controller: GarantiaBundle:Reclamation:ShowRAdm }
+ShowEAdm:
+    path:     /admin/ShowEAdm
+    defaults: { _controller: GarantiaBundle:Reclamation:ShowEAdm }
+
+sendMAF:
+    path:     /admin/sendMAF
+    defaults: { _controller: GarantiaBundle:Chatt:sendMAF }
+MessaAdm:
+    path:     /admin/MessaAdm
+    defaults: { _controller: GarantiaBundle:Chatt:MessaAdm }
+
+ajouterpub:
+    path:     /admin/ajouterpub
+    defaults: { _controller: GarantiaBundle:Publicite:ajouterpub }
+
+listpub:
+    path:     /admin/Listpub
+    defaults: { _controller: GarantiaBundle:Publicite:listtModelepub }
+
+updatepub:
+    path:     /admin/updatepub/{{id}}
+    defaults: { _controller: GarantiaBundle:Publicite:updatepub }
+
+sup:
+    path:     /admin/sup{id}
+    defaults: { _controller: GarantiaBundle:Publicite:sup }
+Disc:
+    path:     /admin/Disc
+    defaults: { _controller: GarantiaBundle:Chatt:Disc }
+SendM:
+    path:     /admin/SendM
+    defaults: { _controller: GarantiaBundle:Chatt:sendM }
+ShowPub:
+    path:     /ShowPub
+    defaults: { _controller: GarantiaBundle:Publicite:ShowPub }
+
+ShPubDet:
+    path:     /{id}/ShPubDet
+    defaults: { _controller: GarantiaBundle:Publicite:ShPubDet }
+    methods:  GET
+test:
+    path:     /test
+    defaults: { _controller: GarantiaBundle:Publicite:test }
+_ajouterreduction:
+    path:     /admin/AjoutReduction
+    defaults: { _controller: GarantiaBundle:Reduction:Ajout }
+_afficherreduction:
+    path:    /admin/AfficherReduction
+    defaults: { _controller: GarantiaBundle:Reduction:Afficher }
+_supprimer:
+    path: /admin/Supprimer/{id}
+    defaults: { _controller: GarantiaBundle:Reduction:Delete}
+_modifier:
+    path:  /admin/Modifier/{id}
+    defaults: { _controller: GarantiaBundle:Reduction:Modifier}
+_ajouterevenement:
+    path:     /admin/AjoutEvenement
+    defaults: { _controller: GarantiaBundle:Evenement:Ajout }
+_afficherevenement:
+    path:    /admin/AfficherEvenement
+    defaults: { _controller: GarantiaBundle:Evenement:Afficher }
+_supprimerEvenement:
+    path:  /admin/SupprimerEvenement/{id}
+    defaults: { _controller: GarantiaBundle:Evenement:Delete}
+_modifierEvenement:
+    path:  /admin/ModifierEvenement/{id}
+    defaults: { _controller: GarantiaBundle:Evenement:Modifier}
+_ajouterassuranceo:
+    path:     /admin/AjoutAssuranceO
+    defaults: { _controller: GarantiaBundle:AssuranceOfferte:Ajout }
+_afficherreassuranceo:
+    path:     /admin/AfficherAssuranceO
+    defaults: { _controller: GarantiaBundle:AssuranceOfferte:Afficher }
+_supprimerOfferte:
+    path:  /admin/SupprimerOfferte/{id}
+    defaults: { _controller: GarantiaBundle:AssuranceOfferte:Delete}
+_modifierOfferte:
+    path: /admin/ModifierOfferte/{id}
+    defaults: { _controller: GarantiaBundle:AssuranceOfferte:Modifier}
+_AfficherEventFront:
+    path:     /AfficherEvenementFront
+    defaults: { _controller: GarantiaBundle:Participation:Afficher }
+_participer:
+    path:     /Participer/{event}
+    defaults: { _controller: GarantiaBundle:Evenement:AjoutP }
+_LireQrcode:
+    path:     /admin/LireQr/{id}
+    defaults: { _controller: GarantiaBundle:Evenement:AfficherLireQrCode }
+_VerifierQrcode:
+    path:     /admin/VerifierQr
+    defaults: { _controller: GarantiaBundle:Evenement:VerifierQr }
+ShowREmp:
+    path:     /admin/ShowREmp
+    defaults: { _controller: GarantiaBundle:Reclamation:ShowREmp }
+ShowDetRec:
+    path:     /admin/ShowDetRec
+    defaults: { _controller: GarantiaBundle:Reclamation:ShowDetRec }
+
+SaveRec:
+    path:     /admin/SaveRec
+    defaults: { _controller: GarantiaBundle:Reclamation:SaveRec }
+MessaEmp:
+    path:     /admin/MessaEmp
+    defaults: { _controller: GarantiaBundle:Chatt:MessaEmp }
+SendMEmp:
+    path:     /admin/SendMEmp
+    defaults: { _controller: GarantiaBundle:Chatt:sendMEmp }
+DiscEp:
+    path:     /admin/DiscEp
+    defaults: { _controller: GarantiaBundle:Chatt:DiscEp }
+Rating:
+    path:     /Rating/{id}
+    defaults: { _controller: GarantiaBundle:Publicite:Rating }
+Rat:
+    path:     /Rat
+    defaults: { _controller: GarantiaBundle:Publicite:Rat    }
+Vue:
+    path:     /Vue
+    defaults: { _controller: GarantiaBundle:Publicite:Vue    }
+ShImgPub:
+    path:     /admin/ShImgPub
+    defaults: { _controller: GarantiaBundle:Publicite:ShImgPub    }
+TriRec:
+    path:     /admin/TriRec
+    defaults: { _controller: GarantiaBundle:Reclamation:TriRec }
+_ajouter:
+    path:     /admin/Ajouter
+    defaults: { _controller: GarantiaBundle:Jugement:Ajout }
+_afficher:
+    path:     /admin/Afficher
+    defaults: { _controller: GarantiaBundle:Jugement:Afficher }
+_afficherjugement:
+    path:    /afficherjugement
+    defaults: { _controller: GarantiaBundle:Jugement:afficherjugement }
+_ajouterincident:
+    path:     /ajouterincident
+    defaults: { _controller: GarantiaBundle:Incident:ajouterincident }
+_afficherincident:
+    path:     /afficherincident
+    defaults: { _controller: GarantiaBundle:Incident:afficherincident }
+_modifierincident:
+    path:     /modifierincident/{id}
+    defaults: { _controller: GarantiaBundle:Incident:modifierincident }
+_supprimerincident:
+    path:     /supprimerincident/{id}
+    defaults: { _controller: GarantiaBundle:Incident:supprimerincident }
+_ajouterconstat:
+    path:     /ajouterconstat
+    defaults: { _controller: GarantiaBundle:Constat:ajouterconstat }
+_afficheraffecter:
+    path:     /admin/afficheraffecter
+    defaults: { _controller: GarantiaBundle:Incident:afficheraffecter }
+_affecterincident:
+    path: /affecterincident/{id}
+    defaults: { _controller: GarantiaBundle:Incident:affecterincident }
+_ajouterrendezvous:
+    path:     /admin/ajouterrendezvous
+    defaults: { _controller: GarantiaBundle:Rendezvous:ajouterrendezvous }
+_afficherrendezvous:
+    path:     /admin/afficherrendezvous
+    defaults: { _controller: GarantiaBundle:Rendezvous:afficherrendezvous }
+_modifierrendezvous:
+    path:     /admin/modifierrendezvous/{id}
+    defaults: { _controller: GarantiaBundle:Rendezvous:modifierrendezvous }
+_supprimerrendezvous:
+    path:     /admin/supprimerrendezvous/{id}
+    defaults: { _controller: GarantiaBundle:Rendezvous:supprimerrendezvous }
+_affecterrendezvous:
+    path:     admin/affecterrendezvous/
+    defaults: { _controller: GarantiaBundle:Incident:affecterrendezvous }
+_expertrendezvous:
+    path:     /expertrendezvous/{id}
+    defaults: { _controller: GarantiaBundle:Rendezvous:ajouterrendezvous }
+_index:
+    path:     /index
+    defaults: { _controller: GarantiaBundle:Incident:index}
+_modifierjugement:
+    path:     /admin/modifierjugement/{id}
+    defaults: { _controller: GarantiaBundle:Jugement:modifierjugement }
+_supprimerjugement:
+    path:     /admin/supprimerjugement/{id}
+    defaults: { _controller: GarantiaBundle:Jugement:supprimerjugement }
+_Tri1:
+    path:     /admin/Tri1
+    defaults: { _controller: GarantiaBundle:Incident:Tri1}
+afficherrdz:
+    path:     /verifierRdz
+    defaults: { _controller: GarantiaBundle:Rendezvous:verifierRdz }
+

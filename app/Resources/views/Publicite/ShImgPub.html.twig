@@ -1,0 +1,26 @@
+
+
+
+{% for post in pub %}
+    <div class="text-center"><h1 class="h1">  {{ post.nompublicite }}</h1></div>
+    <div  style="margin-top: 50px" class="text-center">
+        <div class="blog-grid-top" >
+            <div class="b-grid-top" >
+                <div class="blog_info_left_grid">
+
+                    <img  style="width: 800px "  src="{{   asset('http://localhost/Assurance/web/images/'~post.imagepub)}}" class="img-fluid" alt="">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="text-center">
+
+        <div> <h2>{{ post.description }}</h2></div>
+        <div> <h1>DATE DEBUT : {{ post.datedebut|date('Y-m-d') }}</h1></div>
+        <div> <h1>DATE FIN : {{ post.datefin|date('Y-m-d') }}</h1></div>
+        <div><label id = "label2" for="news_content1" class="required" nu="{{ post.id }}"></label></div>
+    </div>
+{% endfor %}

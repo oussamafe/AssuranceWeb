@@ -86,7 +86,7 @@ class Incident
     /**
      * @var \TypeAssurance
      *
-     * @ORM\ManyToOne(targetEntity="TypeAssurance")
+     * @ORM\ManyToOne(targetEntity="AssuranceBundle\Entity\TypeAssurance")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_assurance", referencedColumnName="id")
      * })
@@ -310,11 +310,11 @@ class Incident
     /**
      * Set idAssurance
      *
-     * @param \GarantiaBundle\Entity\TypeAssurance $idAssurance
+     * @param \AssuranceBundle\Entity\TypeAssurance $idAssurance
      *
      * @return Incident
      */
-    public function setIdAssurance(\GarantiaBundle\Entity\TypeAssurance $idAssurance = null)
+    public function setIdAssurance(\AssuranceBundle\Entity\TypeAssurance $idAssurance = null)
     {
         $this->idAssurance = $idAssurance;
 
@@ -324,7 +324,7 @@ class Incident
     /**
      * Get idAssurance
      *
-     * @return \GarantiaBundle\Entity\TypeAssurance
+     * @return \AssuranceBundle\Entity\TypeAssurance
      */
     public function getIdAssurance()
     {

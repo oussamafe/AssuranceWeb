@@ -31,7 +31,7 @@ class TypeOffre
     /**
      * @var \Agence
      *
-     * @ORM\ManyToOne(targetEntity="Agence")
+     * @ORM\ManyToOne(targetEntity="AgenceBundle\Entity\Agence")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_agence", referencedColumnName="Id_Agence")
      * })

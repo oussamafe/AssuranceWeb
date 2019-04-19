@@ -1,27 +1,121 @@
 {% extends 'base.html.twig' %}
 {% block test %}
 {% endblock %}
+
 {% block content %}
     <section id="intro1" class="clearfix">
     </section>
-    <div class="container">
+    <section id="services" class="section-bg">
+        <div class="container">
+            <header class="section-header">
+                <h3>Actualité</h3>
+                <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+            </header>
 
-        {% for actu in actualite %}
-
-
-            <div class="row feature-item mt-5 pt-5">
-                <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                    <img src="{{ asset('uploads/'~actu.image~'') }}" class="img-fluid" alt="">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
+                    <div class="box">
+                        <div class="icon" style="background: #fceef3;"><i class="ion-ios-bookmarks-outline" style="color: #ff689b;"></i></div>
+                        <h4 class="title"><a href="#first">À la une </a></h4>
+                    </div>
                 </div>
-                <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0" style="visibility: visible; animation-name: fadeInUp;">
-                    <h2><b>{{ actu.titre }}</b></h2>
-                    <h5 style="font-size:13.28px;" > <i class="fa fa-clock-o"></i> Publié le {{ actu.datePublication|localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") }}</h5>
-                    </section>
-                    <p>
-                        {{ actu.description }}
-                    </p>
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
+                    <div class="box">
+                        <div class="icon" style="background: #fff0da;"><i class="ion-ios-analytics-outline" style="color: #e98e06;"></i></div>
+                        <h4 class="title"><a href="#top">Les plus lus</a></h4>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-delay: 0.1s; animation-name: bounceInUp;">
+                    <div class="box">
+                        <div class="icon" style="background: #e6fdfc;"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+                        <h4 class="title"><a href="#tous">Toutes Les Actualités</a></h4>
+                    </div>
                 </div>
             </div>
-        {% endfor %}
+        </div>
+    </section>
+    <div id="first"></div>
+    {% if not first is null %}
+        <section id="features">
+            <div class="container">
+                <header class="section-header">
+                    <h3>À la une</h3>
+                </header>
+                <div class="row feature-item mt-5 pt-5">
+                    <div class="col-lg-6 wow fadeInUp order-1 order-lg-2" style="visibility: visible; animation-name: fadeInUp;">
+                        <img src="{{ asset('uploads/'~first.image~'') }}" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1" style="visibility: visible; animation-name: fadeInUp;">
+                        <h4>{{ first.titre }}</h4>
+                        <h6 style="font-size:13.28px;" > <i class="fa fa-list-alt"></i> {{ first.idCat.nomCategorie }}</h6>
+                        <h5 style="font-size:13.28px;" > <i class="fa fa-clock-o"></i> Publié le {{ first.datePublication|localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") }}</h5>
+                        <p>
+                            {{ first.description }}
+                        </p>
+                        <a href="{{ path('show_front',{'id':first.id }) }}" class="btn btn-primary btn-sm">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <div id="top"></div>
+    <section id="features" class="clearfix">
+        <div class="container">
+            <header class="section-header">
+                <h3>Les plus lus</h3>
+                <br>
+                <br>
+                <br>
+                <br>
+
+            </header>
+            <div class="row">
+                {% for actu in top %}
+                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
+                        <div class="box">
+                            <div class="member" style="background: #fceef3;"><img class="rounded" width="100%" height="270px" src="{{ asset('uploads/'~actu.image~'') }}" alt="" /></div>
+                            <br>
+                            <h4 class="title"><a href="">{{ actu.titre }}</a></h4>
+                            <h6 style="font-size:13.28px;" > <i class="fa fa-list-alt"></i> {{ actu.idCat.nomCategorie }}</h6>
+                            <h5 style="font-size:13.28px;" > <i class="fa fa-clock-o"></i> Publié le {{ actu.datePublication|localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") }}</h5>
+                            <p class="description">{{ actu.description|length > 50 ? actu.description|slice(0, 50) ~ '  ...' : actu.description }}</p>
+                            <a href="{{ path('show_front',{'id':actu.id }) }}" class="btn btn-primary btn-sm">Lire la suite</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <div id="tous"></div>
+    <section id="features" class="clearfix">
+    <div class="container">
+        <header class="section-header">
+            <h3>Toutes Les Actualités</h3>
+        </header>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            {% for actu in actualite %}
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
+                    <div class="box">
+                        <div class="member" style="background: #fceef3;"><img class="rounded" width="100%" height="270px" src="{{ asset('uploads/'~actu.image~'') }}" alt="" /></div>
+                        <br>
+                        <h4 class="title"><a href="">{{ actu.titre }}</a></h4>
+                        <h6 style="font-size:13.28px;" > <i class="fa fa-list-alt"></i> {{ actu.idCat.nomCategorie }}</h6>
+                        <h5 style="font-size:13.28px;" > <i class="fa fa-clock-o"></i> Publié le {{ actu.datePublication|localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") }}</h5>
+                        <p class="description">{{ actu.description|length > 50 ? actu.description|slice(0, 50) ~ '  ...' : actu.description }}</p>
+                        <a href="{{ path('show_front',{'id':actu.id }) }}" class="btn btn-primary btn-sm">Lire la suite</a>
+                        <br>
+
+                        <br><br>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+    </section>
 {% endblock %}

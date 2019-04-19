@@ -1,0 +1,154 @@
+
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+
+    <div class="container" style="margin-top: 50px">
+        <h1> Create Type de Devis</h1>
+        <div class="row">
+
+            <div class="col-lg-6">
+                {{ form_start(form) }}
+
+                <div class="form-group">
+                    <label for="validate-text">Type du Devis</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.nom, {'attr': {'class': "form-control",'placeholder': "Titre",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="champ1" for="validate-text">Champ1</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.champ1, {'attr': {'class': "form-control",'placeholder': "",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="champ2" for="validate-text">Champ2</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.champ2, {'attr': {'class': "form-control",'placeholder': "",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="champ3" for="validate-text">Champ3</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.champ3, {'attr': {'class': "form-control",'placeholder': "",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="champ4" for="validate-text">Champ4</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.champ4, {'attr': {'class': "form-control",'placeholder': "",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="critere1" for="validate-text">Critere1</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.critere1, {'attr': {'class': "form-control",'placeholder': "",'required':"false"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="critere1" for="validate-text">Devis1</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.devis1, {'attr': {'class': "form-control",'placeholder': "",'required':"false"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="critere2" for="validate-text">Critere2</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.critere2, {'attr': {'class': "form-control",'placeholder': "",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="critere1" for="validate-text">Devis2</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.devis2, {'attr': {'class': "form-control",'placeholder': "",'required':"false"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="critere3" for="validate-text">Critere3</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.critere3, {'attr': {'class': "form-control",'placeholder': "",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="critere1" for="validate-text">Devis3</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.devis3, {'attr': {'class': "form-control",'placeholder': "",'required':"false"}})}}
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label id="critere4" for="validate-text">Critere4</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.critere4, {'attr': {'class': "form-control",'placeholder': "",'required':"true"}})}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label id="critere1" for="validate-text">Devis4</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        {{form_widget(form.devis4, {'attr': {'class': "form-control",'placeholder': "",'required':"false"}})}}
+                    </div>
+                </div>
+
+
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+
+            </div>
+        </div></div>
+
+    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script>
+
+        $('[id=form_idAssurance]').on('change',function(){
+
+            $.ajax({
+                type: "POST",
+                url: "{{ path('recherche_typeDevis') }}",
+                data: {'btnval': true, 'text':$(this).children("option:selected").val()},
+                success: function (data) {
+
+                    console.log(data);
+
+                    $("#champ1").text(""+data.champ1);
+                    $("#champ2").text(""+data.champ2);
+                    $("#champ3").text(""+data.champ3);
+                    $("#champ4").text(""+data.champ4);
+
+                    $("#critere1").text(""+data.critere1);
+                    $("#critere2").text(""+data.critere2);
+                    $("#critere3").text(""+data.critere3);
+                    $("#critere4").text(""+data.critere4);
+
+                }
+            });
+
+        });
+
+    </script>
+        {% endblock %}

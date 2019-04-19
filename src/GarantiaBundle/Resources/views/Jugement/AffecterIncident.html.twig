@@ -1,0 +1,57 @@
+
+{%  extends 'baseAdmin.html.twig' %}
+
+
+
+{% block content %}
+    <body>
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <!--begin::Portlet-->
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+
+                                Affectation de l'incident
+                            </h3>
+
+                        </div>
+                    </div>
+
+                    <!--begin::Form-->
+                    <form method="post" class="kt-form">
+                        <div class="kt-portlet__body">
+                            <div class="kt-section kt-section--first">
+                                {{ form_start(f3) }}
+
+
+                                {{  form_widget(f3) }}
+
+                                {{ form_end(f3) }}
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <!--end::Form-->
+                </div>
+
+                <!--end::Portlet-->
+
+                <!--begin::Portlet-->
+
+
+                <!--end::Portlet-->
+            </div>
+
+        </div>
+    </div>
+
+    </body>
+{% endblock %}
+
+

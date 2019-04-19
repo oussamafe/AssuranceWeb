@@ -1,0 +1,158 @@
+
+{% extends 'base.html.twig' %}
+{% block content %}
+<script src="{{ asset('jQuery/jquery-3.3.1.js') }}">
+
+</script>
+<div id="div" style="margin-top: 150px; margin-left: 50px; margin-right: 50px">
+    <h1>List Agence"</h1>
+    <div class="text-center" >
+        <select style="width: 150px" class="custom-select" id="et">
+            <option value="Choose">Choose</option>
+
+            <option value="periode qui depasse 10 jours">Bizerte</option>
+
+        </select>
+
+
+        <form >
+            <div >
+
+                <input class="form-control js-user-search" type="text" placeholder="Rechercher une Reclamation......">
+                <div class="inline-items" id="entitiesNav">
+                    Recherche
+                </div>
+            </div>
+
+
+        </form>
+
+
+       <div class="kt-portlet__body">
+
+        <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_2">
+            <thead>
+            <tr>
+
+                <th>NomAgence</th>
+                <th>Localisation</th>
+                <th>Description</th>
+                <th>Specialisation</th>
+                <th>Responsable</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for l in m %}
+                <tr>
+
+                    <td>{{l.Nomagence }}</td>
+                    <td>{{l.Localisation }}</td>
+                    <td>{{l.Description}}</td>
+                    <td>{{l.Specialisation }}</td>
+                    <td>{{l.Responsable }}</td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+
+
+        </table>
+
+        </div>
+            <script>
+                $(function(){
+                    $("#et").change(function(){
+
+                        var localisation=$('#et option:selected').val();
+                        if(localisation.match('All'))
+                        {
+                            $.ajax(
+                                {
+                                    url:"{{ absolute_url(asset('')) }}app_dev.php/Agence/Trier",
+                                    type:'POST',
+                                    success:function (reponse) {
+                                        $("#div").html(reponse)
+
+                                    }
+
+                                }
+                            )
+                        }
+
+
+                    });
+
+                    });
+
+
+
+               </script>
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+    <script src="{{ asset('JS/jquery.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            var searchRequest = null;
+            $(".js-user-search").keyup(function () {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('Agence') }}",
+                        data: {
+                            'q': value
+                        },
+                        dataType: "text",
+                        success: function (msg) {
+                            //we need to check if the value is the same
+                            //console.log(msg);
+                            if (value == $(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function (key, arr) {
+                                    $.each(arr, function (id, value) {
+
+                                        if (key == 'entities') {
+                                            if (id != 'error') {
+                                                entitySelector.append(
+
+                                                    entitySelector.append( value[0] +" a comme Localisation "+ value[1] +" Description "+ value[2]+"Responsable"+value[3] ));
+
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">' + value + '</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                            else
+                            {
+                                entitySelector.append("l'agence n'existe pas");
+                            }
+
+                        }
+
+                    });
+                }
+
+            });});
+    </script>
+
+
+{% endblock %}

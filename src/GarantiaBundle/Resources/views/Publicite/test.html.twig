@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+ {% block stylesheets %}
+<!-- Bootstrap core CSS -->
+	<!-- <link rel="stylesheet" href="assets/css/bootstrap-3.3.2.css"> -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<!-- Font Awesome (font icons) - http://goo.gl/XfBd3 -->
+	<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+	<!-- Custom style for this website -->
+	<link rel='stylesheet' href='assets/css/custom-style.css'>
+	{% endblock %}
+{% block header %}
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+        {%  for entity in modeless %}
+
+
+            <section class="property">
+
+
+                <div class="team-img">
+                    <img  class="impub"   src="{{ asset('image/') }}{{ entity.imagepub }}"  />
+
+                    <figcaption class="overlay" >
+
+                        <a href="{{ entity.site }}"  class="btn btn-outline-danger btn-lg hvr-underline-from-left">Details</a>
+
+                    </figcaption>
+
+                </div>
+                <div class="prop-info-w3ls">
+                    <div class="both-w3-agileits">
+                        <p><i class="fas fa-building" aria-hidden="true"></i>{{ entity.nompartenaire }}</p>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <br><br>
+        {%  endfor %}
+    </div>
+
+    <div id="main">
+        <h2>Sidenav Push Example</h2>
+        <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    </div>
+    {% endblock %}
+
+{% block javascripts %}
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
+{% endblock %}

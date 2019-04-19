@@ -30,7 +30,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface {
 
         $response = null;
 
-        if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
+        if ($this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN') || $this->authorizationChecker->isGranted('ROLE_EXPERT') || $this->authorizationChecker->isGranted('ROLE_EMPLOYE') ) {
             $response = new RedirectResponse($this->router->generate('user_homepage'));
         } else if ($this->authorizationChecker->isGranted('ROLE_USER')) {
             $response = new RedirectResponse($this->router->generate('garantia_homepage'));

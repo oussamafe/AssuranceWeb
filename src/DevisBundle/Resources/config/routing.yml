@@ -19,9 +19,6 @@ _UpdateD:
 _ComboD:
     path:     /ComboD
     defaults: { _controller: DevisBundle:Devis:comb }
-_Tri:
-    path:     /Tri
-    defaults: { _controller: DevisBundle:Devis:Tri }
 
 pdfDevis:
     path:     /pdf/{id}
@@ -38,3 +35,6 @@ _CreateType:
 _ShowType:
     path:     /ShowTypes
     defaults: { _controller: DevisBundle:Devis:ShowType }
+_Tri:
+    path:     /Tri
+    defaults: { _controller: DevisBundle:Devis:Tri }

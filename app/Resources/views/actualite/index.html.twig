@@ -47,6 +47,8 @@
                     <th>Titre</th>
                     <th>Date Publication</th>
                     <th>Description</th>
+                    <th>Nombre De Vues</th>
+                    <th>Article à la Une</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -57,7 +59,27 @@
                         </td>
                         <td>{{ actualite.titre }}</td>
                         <td>{% if actualite.datePublication %}{{ actualite.datePublication|date('Y-m-d') }}{% endif %}</td>
-                        <td>{{ actualite.description }}</td>
+                        <td>{{ actualite.description|length > 50 ? actualite.description|slice(0, 50) ~ '  ...' : actualite.description }}</td>
+                        <td>
+                            {% if actualite.views > 20 %}
+                                <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill kt-badge--rounded">{{ actualite.views }} <i class="la la-fire"></i></span>
+                            {% elseif actualite.views > 10 %}
+                                <span class="kt-badge kt-badge--warning kt-badge--inline kt-badge--pill kt-badge--rounded">{{ actualite.views }}</span>
+                            {% elseif actualite.views > 5 %}
+                                <span class="kt-badge kt-badge--info kt-badge--inline kt-badge--pill kt-badge--rounded">{{ actualite.views }}</span>
+                            {% elseif actualite.views == 1 %}
+                                <span class="kt-badge kt-badge--success kt-badge--inline kt-badge--pill kt-badge--rounded">{{ actualite.views }}</span>
+                                {% else %}
+                                    <span class="kt-badge kt-badge--success kt-badge--inline kt-badge--pill kt-badge--rounded">{{ actualite.views }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if actualite.front == 1 %}
+                                <i class="la la-check"></i>
+                            {% else %}
+                                <i class="la la-ban"></i>
+                            {% endif %}
+                        </td>
                         <td>
                             <span class="dropdown">
                                     <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown"
@@ -70,10 +92,13 @@
                                                     class="la la-edit"></i>Modifier</a>
                                     </div>
                             </span>
-                                    <a href="{{ path('admin_actualite_show', { 'id': actualite.id }) }}"
-                                       class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
-                                        <i class="la la-eye"></i>
-                                    </a>
+                            <a class="btn btn-sm btn-clean btn-icon btn-icon-md"
+                               href="{{ path('admin_actualite_edit', { 'id': actualite.id }) }}"><i
+                                        class="la la-edit" title="Modifer"></i></a>
+                            <a href="{{ path('admin_actualite_show', { 'id': actualite.id }) }}"
+                               class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Afficher">
+                                <i class="la la-eye"></i>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

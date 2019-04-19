@@ -1,0 +1,62 @@
+<div class="message" id="mgs">
+    {% for i in arr %}
+        <label id="label2" num="{{ arr.tdi }}"> </label>
+
+    {% endfor %}
+    <table class="table table-striped- table-bordered table-hover table-checkable" >
+
+        <tbody>
+
+        {% for post in disc %}
+            <tr>
+                {% if post.dest == 0 %}
+                    <td>{{ post.idAdmin }}</td>
+                {% else %}
+                    <td>{{ post.idEmp }}</td>
+                {% endif %}
+                <td>{{ post.mgs }}</td>
+
+            </tr>
+
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <input type="text" id="mg"> <br>
+    <input type="submit" id="send" value="envoyer">
+
+    <script>
+
+        $(function () {
+
+
+            $("#send").on("click", function () {
+                var mgs = $("#mg").val();
+                var label = $('#label2');
+                var id = label.attr('num');
+                $.ajax(
+                    {
+                        type: 'POST',
+                        url: '{{ absolute_url(asset('')) }}app_dev.php/admin/SendM',
+                        data: {mgs: mgs,id:id},
+                        success:function (response) {
+                            $("#mgs").html(response);
+
+                        }
+
+                    })
+
+
+
+            });
+
+
+
+        });
+
+    </script>
+
+
+
+</div>

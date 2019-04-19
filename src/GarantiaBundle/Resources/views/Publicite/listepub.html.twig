@@ -1,0 +1,93 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Publicite{% endblock %}
+{% block content %}
+{% block table %}
+    <script src="{{ asset ('jquery/jquery-3.3.1.js') }}"></script>
+
+    <div class="card mb-3" id="div">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Table des Publicités</div>
+            <div class="card-body">
+                <a href="{{ path('ajouterpub') }}" class ="btn btn-primary btn-xs" id="yes">Ajouter Une Publicité</a>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="idr" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th scope="id" style="display: none;">id</th>
+                            <th>nom publicite</th>
+                            <th>Description</th>
+                            <th>date debut</th>
+                            <th>date fin</th>
+                            <th>nombre de vue</th>
+                            <th>Action</th>
+                             </tr>
+                        </thead>
+
+
+                        <tbody>
+                        {%  for entity in modeles %}
+                            <tr>
+                                <td style="display: none;">{{ entity.id }}</td>
+                                <td>{{ entity.nompublicite }}</td>
+                                <td>{{ entity.description }}</td>
+                                <td>{{ entity.datedebut|date("m/d/Y") }}</td>
+                                <td>{{ entity.datefin|date("m/d/Y") }}</td>
+                                <td>{{ entity.vue }}</td>
+                                <td><a href="{{ path('updatepub',{'id': entity.id  }) }}">modifier     </a><a href="{{ path('sup',{'id': entity.id  }) }}">supprimer</a></td>
+
+                            </tr>
+                        {% else %}
+                            <h1>Table is empty</h1>
+                        {%  endfor %}
+                        </tbody>
+                    </table>
+                    <script>
+
+
+                        $(function () {
+                            $("#idr tbody tr").click( function () {
+                                var tableData = $(this).children("td").map(
+                                    function () {
+                                        return $(this).text();
+                                    }
+                                ).get();
+
+                                var td=tableData[0];
+
+                                $.ajax(
+                                    {
+                                        type: 'POST',
+                                        url: '{{ absolute_url(asset('')) }}app_dev.php/admin/ShImgPub',
+                                        data: {td:td},
+                                        success:function(response ) {
+                                            $("#div").html(response)
+
+                                        }
+
+                                    }
+                                )
+
+
+
+                            } );
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
+{% endblock %}

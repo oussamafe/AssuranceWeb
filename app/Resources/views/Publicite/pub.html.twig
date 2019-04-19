@@ -1,0 +1,22 @@
+
+
+
+{% for publ in pub %}
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ publ.id }}" style="margin-top: 50px">
+    <a href="{{ path('Rating',{'id':publ.id }) }}" class="btn btn-primary">{{ publ.nompublicite }}</a>
+        <div class="text-center" >
+            <div class="blog-grid-top" >
+                <div class="b-grid-top" >
+                    <div class="blog_info_left_grid">
+
+                        <img  style="width:50px "  src="{{   asset('http://localhost/Assurance/web/images/'~publ.imagepub)}}" class="img-fluid" alt="">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </button>
+
+{% endfor %}

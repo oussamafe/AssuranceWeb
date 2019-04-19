@@ -43,9 +43,9 @@ class Reduction
     private $dateFin;
 
     /**
-     * @var \TypeAssurance
+     * @var \integer
      *
-     * @ORM\ManyToOne(targetEntity="TypeAssurance")
+     * @ORM\ManyToOne(targetEntity="AssuranceBundle\Entity\TypeAssurance")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_assurance", referencedColumnName="id")
      * })
@@ -158,5 +158,9 @@ class Reduction
     public function getIdAssurance()
     {
         return $this->idAssurance;
+    }
+    public function __toString()
+    {
+        return (string) $this->getIdAssurance();
     }
 }

@@ -115,7 +115,8 @@ class PubliciteController extends Controller
         $post = $em->getRepository(Publicite::class)->find($id);
         $em->remove($post);
         $em->flush();
-        return $this->redirectToRoute("listpub");
+        $models = $this->getDoctrine()->getRepository(Publicite::class)->findAll();
+        return $this->render("@Garantia/Publicite/listepub.html.twig", array('modeles' => $models));
     }
 
 
@@ -150,9 +151,9 @@ class PubliciteController extends Controller
             $em5 = $this->getDoctrine()->getManager();
             $idp=$em5->find('GarantiaBundle:Publicite', $id);
             $star->setIdPub($idp);
-            $em = $this->getDoctrine()->getManager();
             $star->setIdClient($this->get('security.token_storage')->getToken()->getUser());
 
+            $em = $this->getDoctrine()->getManager();
             $em->persist($star);
             $em->flush();
             $posts = $this->getDoctrine()->getRepository('GarantiaBundle:Publicite')->findBy(array('id'=>$id));
@@ -197,12 +198,7 @@ class PubliciteController extends Controller
 
     }
 
-    public function testAction(Request $request)
-    {
-        return $this->render('Publicite/test.html.twig');
 
-
-    }
 
 
 }

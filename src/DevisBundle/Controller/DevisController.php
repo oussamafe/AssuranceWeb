@@ -3,7 +3,7 @@
 namespace DevisBundle\Controller;
 
 
-use DevisBundle\Entity\TypeAssurance;
+use AssuranceBundle\Entity\TypeAssurance;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use DevisBundle\Entity\Devis;
@@ -42,7 +42,7 @@ class DevisController extends Controller
     public function combAction(Request $request){
 
 
-        $data=new \GarantiaBundle\Entity\TypeAssurance();
+        $data=new \AssuranceBundle\Entity\TypeAssurance();
 
 
   $form = $this->createFormBuilder($data)
@@ -57,7 +57,7 @@ class DevisController extends Controller
 
         }
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('DevisBundle:TypeAssurance')->findAll();
+        $categories = $em->getRepository('AssuranceBundle:TypeAssurance')->findAll();
 
 
         return $this->render('Devis/combo.html.twig', array(
@@ -80,7 +80,7 @@ class DevisController extends Controller
         $form = $this->createFormBuilder($r)
             ->add('idAssurance', EntityType::class, [
                 // looks for choices from this entity
-                'class' => \GarantiaBundle\Entity\TypeAssurance::class,
+                'class' => \AssuranceBundle\Entity\TypeAssurance::class,
 
                 // uses the User.username property as the visible option string
                 'choice_label' => 'nom',
@@ -138,10 +138,10 @@ class DevisController extends Controller
             $typeform=$form['idAssurance']->getData();
 
             $em=$this->getDoctrine()->getManager();
-            $type = new \GarantiaBundle\Entity\TypeAssurance();
+            $type = new \AssuranceBundle\Entity\TypeAssurance();
           //  $ty=$em->find('DevisBundle:Devis',5)->getIdAssurance();
             $r->setIdAssurance($typeform->getId());
-           // $type = $this->getDoctrine()->getRepository('GarantiaBundle:TypeAssurance')->find($ty);
+           // $type = $this->getDoctrine()->getRepository('AssuranceBundle:TypeAssurance')->find($ty);
 
 
 
@@ -177,9 +177,9 @@ class DevisController extends Controller
     {
         $devis= new Devis();
         $user= new User();
-        $type= new \GarantiaBundle\Entity\TypeAssurance();
+        $type= new \AssuranceBundle\Entity\TypeAssurance();
         $devis = $this->getDoctrine()->getRepository('DevisBundle:Devis')->find($id);
-        $type = $this->getDoctrine()->getRepository('GarantiaBundle:TypeAssurance')->find($devis->getIdAssurance());
+        $type = $this->getDoctrine()->getRepository('AssuranceBundle:TypeAssurance')->find($devis->getIdAssurance());
         $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($devis->getIdClient());
 
        // var_dump($type->getNom());
@@ -215,7 +215,7 @@ class DevisController extends Controller
         $form = $this->createFormBuilder($r)
             ->add('idAssurance', EntityType::class, [
                 // looks for choices from this entity
-                'class' => \GarantiaBundle\Entity\TypeAssurance::class,
+                'class' => \AssuranceBundle\Entity\TypeAssurance::class,
 
                 // uses the User.username property as the visible option string
                 'choice_label' => 'nom',
@@ -275,7 +275,7 @@ class DevisController extends Controller
             $em=$this->getDoctrine()->getManager();
          //   $ty=$em->find('DevisBundle:Devis',5)->getIdAssurance();
           //  $r->setIdAssurance($ty);
-            //$type = $this->getDoctrine()->getRepository('GarantiaBundle:TypeAssurance')->find($ty);
+            //$type = $this->getDoctrine()->getRepository('AssuranceBundle:TypeAssurance')->find($ty);
             $r=$em->getRepository('DevisBundle:Devis')->find($id);
           //  $us=$em->find('DevisBundle:Devis',5)->getIdAssurance();
          //   var_dump($typeform->getId());
@@ -313,7 +313,7 @@ class DevisController extends Controller
         $devis =$em->getRepository('DevisBundle:Devis')->find($id);
         $snappy = $this->get('knp_snappy.pdf');
 
-        $type = $this->getDoctrine()->getRepository('GarantiaBundle:TypeAssurance')->find($devis->getIdAssurance());
+        $type = $this->getDoctrine()->getRepository('AssuranceBundle:TypeAssurance')->find($devis->getIdAssurance());
         $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($devis->getIdClient());
         $html = $this->renderView('Devis/pdf.html.twig', array('devis'=>$devis,'type'=>$type,'user'=>$user
             //..Send some data to your view if you need to //
@@ -340,7 +340,7 @@ class DevisController extends Controller
 
 
        // $devis = $this->getDoctrine()->getRepository('DevisBundle:Devis')->find($id);
-        $type = $this->getDoctrine()->getRepository('GarantiaBundle:TypeAssurance')->find($request->get('text'));
+        $type = $this->getDoctrine()->getRepository('AssuranceBundle:TypeAssurance')->find($request->get('text'));
        // $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($devis->getIdClient());
         if($request->isXmlHttpRequest() && $request->isMethod('post') && $request->get('text')!=null){
 
@@ -392,7 +392,7 @@ class DevisController extends Controller
     public function createTypeAction(Request $request)
     {
 
-        $r= new \GarantiaBundle\Entity\TypeAssurance();
+        $r= new \AssuranceBundle\Entity\TypeAssurance();
         $form = $this->createFormBuilder($r)
             ->add('nom',TextType::class,array('attr'=>array('class'=>'form-control') ))
             ->add('champ1',TextType::class,array('attr'=>array('class'=>'form-control') ))
@@ -433,10 +433,10 @@ class DevisController extends Controller
             $nom=$form['nom']->getData();
 
             $em=$this->getDoctrine()->getManager();
-            $type = new \GarantiaBundle\Entity\TypeAssurance();
+            $type = new \AssuranceBundle\Entity\TypeAssurance();
             //  $ty=$em->find('DevisBundle:Devis',5)->getIdAssurance();
 
-            // $type = $this->getDoctrine()->getRepository('GarantiaBundle:TypeAssurance')->find($ty);
+            // $type = $this->getDoctrine()->getRepository('AssuranceBundle:TypeAssurance')->find($ty);
 
 
 
@@ -455,6 +455,8 @@ class DevisController extends Controller
             $r->setDevis3($devis3);
             $r->setDevis4($devis4);
             $r->setPrixInitial($prix);
+            $r->setImage('aa');
+            $r->setDescription('');
 
             $em=$this->getDoctrine()->getManager();
             $em->persist($r);
@@ -470,7 +472,7 @@ class DevisController extends Controller
     public function ShowTypeAction(Request $request)
     {
         // replace this example code with whatever you need
-        $posts = $this->getDoctrine()->getRepository('GarantiaBundle:TypeAssurance')->findAll();
+        $posts = $this->getDoctrine()->getRepository('AssuranceBundle:TypeAssurance')->findAll();
         $em=$this->getDoctrine()->getManager();
         $model = $em->getRepository("GarantiaBundle:CategorieActu")->findAll();
         $user=$this->getUser();

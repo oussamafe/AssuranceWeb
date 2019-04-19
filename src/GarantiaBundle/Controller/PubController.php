@@ -17,12 +17,13 @@ class PubController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $RAW_QUERY = "SELECT * FROM publicite where    DATEDIFF(CURDATE(),datefin)>1";
+        $RAW_QUERY = "SELECT * FROM publicite where DATEDIFF(CURDATE(),datefin)<1";
 
         $statement = $em->getConnection()->prepare($RAW_QUERY);
         $statement->execute();
 
         $result = $statement->fetchAll();
+
 
         return $this->render('Publicite/pub.html.twig' , array("pub" => $result));
     }

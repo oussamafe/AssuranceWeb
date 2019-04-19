@@ -9,7 +9,7 @@
         <div class="b-grid-top">
             <div class="blog_info_left_grid">
                 <a href="single.html">
-                    <img src="{{   asset('Bundles/AppBundle/images/1.jpg')}}" class="img-fluid" alt="">
+                    <img  style="width: 800px "  src="{{   asset('http://localhost/Assurance/web/images/3.jpg')}}" class="img-fluid" alt="">
                 </a>
             </div>
         </div>
@@ -20,7 +20,7 @@
         <p>Description :{{ forum.descriptionF }}</p>
         <p>number comments :</p> {{ forum.countComments }}
     {% if user.id|number_format != forum.idUser.id|number_format %}
-        <center> <button id="nom" name="signaler"  class="btn btn-warning" >signaler</button> </center>
+        <center> <button id="nom" name="signaler"  class="btn btn-danger" >signaler</button> </center>
 
         {% endif %}
     </div>
@@ -97,7 +97,7 @@
                 $("#input").prop('disabled', true);
                 $("#but").text("Forum signaler ... :(");
                 $("#but").prop('disabled', true);
-                alert('signaler avec succée')
+            //    alert('signaler avec succée')
             });
         })
     </script>

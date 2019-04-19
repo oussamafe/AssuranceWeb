@@ -1,0 +1,75 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+
+
+<div style="margin-top: 150px; margin-left: 50px; margin-right: 50px">
+<h1>Types de Devis List</h1>
+<div class="container">
+    <nav class="navbar navbar-inverse">
+
+        <div class="container-fluid" >
+
+            <div class="collapse navbar-collapse " id="bs-example-navbar-collaspe-2">
+            </div>
+        </div>
+    </nav>
+</div>
+<a href="{{ path('_CreateType') }}" class ="btn btn-primary btn-xs">Create Type de Devis</a>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="objet">Nom du devis</th>
+        <th scope="etat">champ1</th>
+        <th scope="type">champ2 </th>
+        <th scope="reponse">champ3</th>
+        <th scope="action">champ4</th>
+        <th scope="action">critere1</th>
+        <th scope="action">devis1</th>
+        <th scope="action">critere2</th>
+        <th scope="action">devis2</th>
+        <th scope="action">critere3</th>
+        <th scope="action">devis3</th>
+        <th scope="action">critere4</th>
+        <th scope="action">devis4</th>
+        <th scope="action">prix initial</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for d in posts %}
+        <tr class="table-active">
+            <td>{{ d.nom }}</td>
+
+            <td>{{ d.champ1 }}</td>
+            <td>{{ d.champ2 }}</td>
+            <td>{{ d.champ3 }}</td>
+            <td>{{ d.champ4 }}</td>
+            <td>{{ d.critere1}}</td>
+            <td>{{ d.devis1}}</td>
+            <td>{{ d.critere2}}</td>
+            <td>{{ d.devis2}}</td>
+            <td>{{ d.critere3 }}</td>
+            <td>{{ d.devis3 }}</td>
+            <td>{{ d.critere4 }}</td>
+            <td>{{ d.devis4 }}</td>
+            <td>{{ d.prixinitial }}</td>
+
+
+            <td>
+
+                <a href="{{ path('_UpdateD',{ 'id': d.id }) }}" class ="btn btn-success btn-xs">Edit</a>
+                <a href="{{ path('_DeleteD',{ 'id': d.id }) }}" class ="btn btn-danger btn-xs">Delete</a>
+            </td>
+
+        </tr>
+    {% else %}
+        <tr>
+            <td>text</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+</div>
+{% endblock %}

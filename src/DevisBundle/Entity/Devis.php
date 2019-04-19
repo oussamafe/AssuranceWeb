@@ -404,5 +404,4 @@ class Devis
     {
         return $this->dateDevis;
     }
-
 }

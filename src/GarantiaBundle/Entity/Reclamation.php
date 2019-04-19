@@ -3,8 +3,6 @@
 namespace GarantiaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
  * Reclamation
@@ -34,13 +32,6 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="contenu", type="string", length=255, nullable=false)
-     *@Assert\Length(
-     *      min = 2,
-     *      max = 10,
-     *      minMessage = "Your contenu must be at least {{ limit }} characters long",
-     *      maxMessage = "Your contenu cannot be longer than {{ limit }} characters"
-     * )
-     *
      */
     private $contenu;
 

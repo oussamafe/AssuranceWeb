@@ -23,6 +23,21 @@ class AppKernel extends Kernel
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
             new Oneup\UploaderBundle\OneupUploaderBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new DocDocDoc\NexmoBundle\DocDocDocNexmoBundle(),
+            new DevisBundle\DevisBundle(),
+            new ForumBundle\ForumBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new AssuranceBundle\AssuranceBundle(),
+            new AgenceBundle\AgenceBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

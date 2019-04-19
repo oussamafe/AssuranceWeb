@@ -1,0 +1,25 @@
+agence_homepage:
+    path:     /
+    defaults: { _controller: AgenceBundle:Default:index }
+Afficher:
+    path:     /admin/Afficher
+    defaults: { _controller: AgenceBundle:Default:Afficher }
+Supprimer:
+    path:     /Supprimer/{IdAgence}
+    defaults: { _controller: AgenceBundle:Default:Supprimer }
+Modifier:
+    path:     /admin/Modifier/{IdAgence}
+    defaults: { _controller: AgenceBundle:Default:Modifier }
+Ajouter:
+    path:     /admin/Ajouter
+    defaults: { _controller: AgenceBundle:Default:Ajouter }
+Afficher2:
+    path:     /Afficher2
+    defaults: { _controller: AgenceBundle:Default:Afficher2 }
+Trier:
+    path:     /localisation
+    defaults: { _controller: AgenceBundle:Default:Trier }
+
+Agence:
+    path:     /Agence
+    defaults: { _controller: AgenceBundle:Default:Agence }

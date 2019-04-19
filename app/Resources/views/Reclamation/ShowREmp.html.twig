@@ -1,0 +1,140 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block stylesheets %}
+
+    {{ parent() }}
+    <link href="{{ asset('back/assets/vendors/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
+          type="text/css"/>
+<div id ="div" >
+{% endblock %}
+{% block content %}
+
+    <script src="{{ asset ('jquery/jquery-3.3.1.js') }}"></script>
+    <section id="intro1" class="clearfix">
+    </section>
+
+<div class="text-center" >
+    <select style="width: 150px" class="custom-select" id="et">
+        <option value="Choose">Choose</option>
+        <option value="All">All</option>
+        <option value="non Urgente">non Urgente</option>
+        <option value="Urgente">Urgente</option>
+
+    </select>
+</div>
+
+        <table class="table table-hover" id="idr" >
+            <thead>
+            <tr>
+                <th scope="id" style="display: none;">id</th>
+                <th scope="objet">objet</th>
+                <th scope="contenu">contenu</th>
+                <th scope="etat">etat</th>
+                <th scope="type">type</th>
+                <th scope="reponse">reponse</th>
+                <th scope="reponse">date</th>
+
+            </tr>
+            </thead>
+            <tbody >
+            {% for post in posts %}
+                <tr class="table-active"   >
+                    <td style="display: none;">{{ post.id }}</td>
+                    <td>{{ post.objet }}</td>
+                    <td>{{ post.contenu }}</td>
+                    <td>{{ post.etat }}</td>
+                    <td>{{ post.type }}</td>
+                    <td>{{ post.reponse }}</td>
+                    <td>{{ post.date }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>no records !!!</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+        <script>
+            $(function(){
+                $("#et").change(function(){
+
+                    var nom=$('#et option:selected').val();
+                    if(nom.match('All'))
+                    {
+                        $.ajax(
+                            {
+                                url:"{{ absolute_url(asset('')) }}app_dev.php/admin/ShowREmp",
+                                type:'POST',
+                                success:function (reponse) {
+                                    $("#div").html(reponse)
+
+                                }
+
+                            }
+                        )
+                    }
+                    else {
+                    $.ajax(
+                        {
+                            url:"{{ absolute_url(asset('')) }}app_dev.php/admin/TriRec",
+                            data:{nom : nom},
+                            type:'POST',
+                            success:function (reponse) {
+                                $("#div").html(reponse)
+
+                            }
+
+                        }
+                    )
+                    }
+
+                });
+
+            });
+
+            $(function () {
+                $("#idr tbody tr").click( function () {
+                    var tableData = $(this).children("td").map(
+                        function () {
+                            return $(this).text();
+                        }
+                    ).get();
+                    var id=tableData[0];
+
+                    $.ajax(
+                        {
+                            type: 'POST',
+                            url: '{{ absolute_url(asset('')) }}app_dev.php/admin/ShowDetRec',
+                            data: {id:id},
+                            success:function(response ) {
+                                $("#div").html(response)
+
+                            }
+                        }
+                    )
+
+
+
+                } );
+            });
+        </script>
+
+
+
+
+
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('back/assets/vendors/custom/datatables/datatables.bundle.js') }}"
+            type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('#kt_table_2').DataTable();
+        });
+    </script>
+{% endblock %}
+

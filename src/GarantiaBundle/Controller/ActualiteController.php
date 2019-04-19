@@ -53,6 +53,8 @@ class ActualiteController extends Controller
             }
 
             $actualite->setDatePublication();
+            $actualite->setViews('0');
+            $actualite->setFront('0');
             $em = $this->getDoctrine()->getManager();
             $em->persist($actualite);
             $em->flush();
@@ -159,11 +161,27 @@ class ActualiteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $model = $em->getRepository("GarantiaBundle:Actualite")->findAll();
-        return $this->render('actualite/affichertous.html.twig' , array('actualite' => $model));
+        $top = $em->getRepository('GarantiaBundle:Actualite')->findBy([],['views'=>'desc'],3);
+        $first = $em->getRepository('GarantiaBundle:Actualite')->findOneBy(['front'=>1]);
+        return $this->render('actualite/affichertous.html.twig' , array('actualite' => $model , 'top'=>$top, 'first'=>$first));
     }
 
-    public function afficherunarticleAction()
+    public function afficherunarticleAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $modele=$em->getRepository("GarantiaBundle:Actualite")->findOneBy(['id' => $id]);
+        $modele->setViews($modele->getViews()+1);
+        $em->flush();
 
+        $images = $em->getRepository("GarantiaBundle:ImagesActu")->findBy(['idActu' => $id]);
+        return $this->render('actualite/article.html.twig' , array('actualite' => $modele ,'images' => $images ));
+    }
+
+    public function affichercategorieAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categorie = $em->getRepository('GarantiaBundle:Actualite')->findBy(['idCat' => $id]);
+        $nomCat = $em->getRepository('GarantiaBundle:Actualite')->findOneBy(['idCat' => $id]);
+        return $this->render('actualite/affichercat.html.twig' , array('actualite' => $categorie , 'nomCat' =>$nomCat ));
     }
 }

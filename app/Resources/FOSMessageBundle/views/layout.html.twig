@@ -1,0 +1,33 @@
+
+
+
+{%  extends 'baseAdmin.html.twig' %}
+{% block content %}
+    <center>
+    <section id="intro1" class="clearfix">
+    </section><!-- #intro -->
+    <section id="testimonials" class="clearfix">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset={{ _charset }}" />
+        <title>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</title>
+    </head>
+
+    <body>
+
+       <center> <h1>Messagerie
+            <small class="text-muted">Messagerie Expert-Admin</small></h1></center>
+
+        <ul><center>
+
+            <li> <td><button type="button" class="btn btn-success btn-elevate-hover" > <a href ="{{ url('fos_message_inbox') }}">Boite de réception</a></button></td></li>
+           <li> <td><button type="button" class="btn btn-warning btn-elevate-hover" > <a href ="{{ url('fos_message_sent') }}">Messages Envoyés</a></button></td></li>
+            <td><button type="button" class="btn btn-danger btn-elevate-hover" > <a href ="{{ url('fos_message_deleted') }}">Messages Supprimés</a></button></td>
+            </center>
+        </ul>
+
+        {% block fos_message_content %}{% endblock %}
+
+    </body>
+</center>
+{% endblock %}

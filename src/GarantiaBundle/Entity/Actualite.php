@@ -3,12 +3,12 @@
 namespace GarantiaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Actualite
  *
  * @ORM\Table(name="actualite", indexes={@ORM\Index(name="fk_cat_actu", columns={"id_cat"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GarantiaBundle\Repository\ActualiteRepository")
  */
 class Actualite
 {
@@ -25,6 +25,12 @@ class Actualite
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 30,
+     *      minMessage = "Le Titre doit contenir au moins {{ limit }} caractéres ",
+     *      maxMessage = "Le Titre doit contenir au plus {{ limit }} caractéres "
+     * )
      */
     private $titre;
 
@@ -39,6 +45,12 @@ class Actualite
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 250,
+     *      minMessage = "La Description doit contenir au moins {{ limit }} caractéres ",
+     *      maxMessage = "La Description doit contenir au plus {{ limit }} caractéres "
+     * )
      */
     private $description;
 

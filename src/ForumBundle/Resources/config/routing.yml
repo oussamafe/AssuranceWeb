@@ -35,7 +35,6 @@ mesForums:
 participe:
     path:     /participe
     defaults: { _controller:ForumBundle:Default:participe}
-
 chart:
     path:     /chart
     defaults: { _controller: "ForumBundle:Default:chart" }

@@ -5,7 +5,7 @@ namespace GarantiaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AssuranceOfferte
+ * AssuranceOfferteController
  *
  * @ORM\Table(name="assurance_offerte", indexes={@ORM\Index(name="fk_id_assurance4", columns={"id_assurance"}), @ORM\Index(name="fk_id_assuranceo", columns={"id_assurance_o"})})
  * @ORM\Entity
@@ -38,7 +38,7 @@ class AssuranceOfferte
     /**
      * @var \TypeAssurance
      *
-     * @ORM\ManyToOne(targetEntity="TypeAssurance")
+     * @ORM\ManyToOne(targetEntity="AssuranceBundle\Entity\TypeAssurance")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_assurance", referencedColumnName="id")
      * })
@@ -48,7 +48,7 @@ class AssuranceOfferte
     /**
      * @var \TypeAssurance
      *
-     * @ORM\ManyToOne(targetEntity="TypeAssurance")
+     * @ORM\ManyToOne(targetEntity="AssuranceBundle\Entity\TypeAssurance")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_assurance_o", referencedColumnName="id")
      * })

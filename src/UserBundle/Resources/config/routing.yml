@@ -3,20 +3,20 @@ user_homepage:
     defaults: { _controller: UserBundle:Default:index }
 
 showAll:
-    path:     /admin/showAllusers
+    path:     /showAllusers
     defaults: { _controller: UserBundle:Default:ShowAllUsers }
 showClients:
-    path:     /admin/showClients
+    path:     /showClients
     defaults: { _controller: UserBundle:Default:ShowClients }
 promoteUserExpert:
-    path:     /admin/PromoteUserExpert
+    path:     /PromoteUserExpert/{id}
     defaults: { _controller: UserBundle:Default:PromoteUserExpert }
 promoteUserEmploye:
-    path:     /admin/PromoteUserEmploye
+    path:     /PromoteUserEmploye/{id}
     defaults: { _controller: UserBundle:Default:PromoteUserEmploye }
 showExpert:
-    path:     /admin/ShowExpert
+    path:     /ShowExpert
     defaults: { _controller: UserBundle:Default:ShowExpert }
 ShowEmploye:
-    path:     /admin/ShowEmploye
+    path:     /ShowEmploye
     defaults: { _controller: UserBundle:Default:ShowEmploye }

@@ -81,19 +81,8 @@ class Publicite
      */
     private $description;
 
-
-
-
-
-
-
-
-
-
     /**
-     * Get id
-     *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -101,23 +90,15 @@ class Publicite
     }
 
     /**
-     * Set vue
-     *
-     * @param integer $vue
-     *
-     * @return Publicite
+     * @param int $id
      */
-    public function setVue($vue)
+    public function setId($id)
     {
-        $this->vue = $vue;
-
-        return $this;
+        $this->id = $id;
     }
 
     /**
-     * Get vue
-     *
-     * @return integer
+     * @return string
      */
     public function getVue()
     {
@@ -125,22 +106,14 @@ class Publicite
     }
 
     /**
-     * Set imagepub
-     *
-     * @param string $imagepub
-     *
-     * @return Publicite
+     * @param string $vue
      */
-    public function setImagepub($imagepub)
+    public function setVue($vue)
     {
-        $this->imagepub = $imagepub;
-
-        return $this;
+        $this->vue = $vue;
     }
 
     /**
-     * Get imagepub
-     *
      * @return string
      */
     public function getImagepub()
@@ -149,22 +122,14 @@ class Publicite
     }
 
     /**
-     * Set nompublicite
-     *
-     * @param string $nompublicite
-     *
-     * @return Publicite
+     * @param string $imagepub
      */
-    public function setNompublicite($nompublicite)
+    public function setImagepub($imagepub)
     {
-        $this->nompublicite = $nompublicite;
-
-        return $this;
+        $this->imagepub = $imagepub;
     }
 
     /**
-     * Get nompublicite
-     *
      * @return string
      */
     public function getNompublicite()
@@ -173,22 +138,14 @@ class Publicite
     }
 
     /**
-     * Set datedebut
-     *
-     * @param \DateTime $datedebut
-     *
-     * @return Publicite
+     * @param string $nompublicite
      */
-    public function setDatedebut($datedebut)
+    public function setNompublicite($nompublicite)
     {
-        $this->datedebut = $datedebut;
-
-        return $this;
+        $this->nompublicite = $nompublicite;
     }
 
     /**
-     * Get datedebut
-     *
      * @return \DateTime
      */
     public function getDatedebut()
@@ -197,22 +154,14 @@ class Publicite
     }
 
     /**
-     * Set datefin
-     *
-     * @param \DateTime $datefin
-     *
-     * @return Publicite
+     * @param \DateTime $datedebut
      */
-    public function setDatefin($datefin)
+    public function setDatedebut($datedebut)
     {
-        $this->datefin = $datefin;
-
-        return $this;
+        $this->datedebut = $datedebut;
     }
 
     /**
-     * Get datefin
-     *
      * @return \DateTime
      */
     public function getDatefin()
@@ -221,26 +170,33 @@ class Publicite
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Publicite
+     * @param \DateTime $datefin
      */
-    public function setDescription($description)
+    public function setDatefin($datefin)
     {
-        $this->description = $description;
-
-        return $this;
+        $this->datefin = $datefin;
     }
 
     /**
-     * Get description
-     *
      * @return string
      */
     public function getDescription()
     {
         return $this->description;
     }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+
+
+
+
+
+
 }

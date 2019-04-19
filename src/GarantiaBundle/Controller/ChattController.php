@@ -93,11 +93,10 @@ class ChattController extends Controller
 
         $result1 = $statement1->fetchAll();
 
-
         $query = $this->getDoctrine()->getEntityManager()
             ->createQuery(
-                'SELECT u FROM UserBundle:User u WHERE (u.roles NOT LIKE :role) AND (u.roles NOT LIKE :role1) AND (u.roles NOT LIKE :role2) '
-            )->setParameters(array('role' => '%"ROLE_SUPER_ADMIN"%', 'role1' => '%"ROLE_CLIENT"%', 'role2' => '%"ROLE_EXPERT"%'));
+                'SELECT u FROM UserBundle:User u WHERE (u.roles  LIKE :role) '
+            )->setParameters(array('role' => '%"ROLE_EMPLOYE"%'));
         $disc = $query->getResult();
 
         $id4 = $this->get('security.token_storage')->getToken()->getUser()->getId();

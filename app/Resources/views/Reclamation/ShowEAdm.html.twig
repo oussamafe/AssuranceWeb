@@ -1,0 +1,98 @@
+
+<div class="kt-portlet__body" >
+
+     <script src="{{ asset ('jquery/jquery-3.3.1.js') }}"></script>
+    <!--begin: Datatable -->
+    {% for i in arr %}
+        <label id="label2" num="{{ arr.tdi }}">{{ arr.tdi }} </label>
+
+    {% endfor %}
+
+    <table class="table table-striped- table-bordered table-hover table-checkable" id="idRR">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>{{ 'form.email'|trans({}, 'FOSUserBundle') }}</th>
+            <th>{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</th>
+            <th>Rôle</th>
+            <th>Date D'insciption</th>
+            <th>Dernière Connexion</th>
+            <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in emp %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.username }}</td>
+                <td>
+                    {% if user.roles[0] == "ROLE_USER" %}
+                        Client
+                    {% elseif user.roles[0] == "ROLE_SUPER_ADMIN" %}
+                        Administrateur
+                    {% elseif user.roles[0] == "ROLE_EMPLOYE" %}
+                        Employé
+                    {% elseif user.roles[0] == "ROLE_EXPERT" %}
+                        Expert
+                    {% endif %}
+                </td>
+                <td>{{ user.registerDate|date("m/d/Y") }}</td>
+                <td>
+                    {% set current = user.lastLogin |date('d-m-Y') %}
+                    {% set dateb = "now"|date("m/d/Y") %}
+                    {% set difference = date(dateb).diff(date(current)) %}
+                    {% set leftDays = difference.days %}
+                    {% if leftDays == 0 %}
+                        Aujourd'hui
+                    {% elseif leftDays == 1 %}
+                        il y a un jour
+                    {% else %}
+                        il y a {{ leftDays }} jours
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user.enabled == 1 %}
+                        <span class="kt-badge kt-badge--success kt-badge--inline kt-badge--pill kt-badge--rounded">Active</span>
+                    {% else %}
+                        <span class="kt-badge kt-badge--warning kt-badge--inline">En Attente</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!--end: Datatable -->
+    <script>
+
+
+        $(function () {
+            $("#idRR tbody tr").click( function () {
+                var tableData = $(this).children("td").map(
+                    function () {
+                        return $(this).text();
+                    }
+                ).get();
+                var td=tableData[0];
+                var label = $('#label2');
+                var id = label.attr('num');
+
+                $.ajax(
+                    {
+                        type: 'POST',
+                        url: '{{ absolute_url(asset('')) }}app_dev.php/admin/sendMAF',
+                        data:{id:id,td:td},
+                        success: window.location.reload()
+                    }
+                )
+
+
+            } );
+        });
+    </script>
+
+
+
+</div>
+

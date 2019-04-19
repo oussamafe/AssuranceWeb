@@ -22,3 +22,4 @@ categorieactu_delete:
     path:     /{id}/delete
     defaults: { _controller: "GarantiaBundle:CategorieActu:delete" }
     methods:  DELETE
+

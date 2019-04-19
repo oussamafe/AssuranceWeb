@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block test %}
+{% endblock %}
+
+{% block content %}
+    <section id="intro1" class="clearfix">
+    </section>
+    <section id="features" class="clearfix">
+        <div class="container">
+            <header class="section-header">
+                <h3>Toutes Les Actualités : {{ nomCat.idCat.nomCategorie }}</h3>
+            </header>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                {% for actu in actualite %}
+                    <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s" style="visibility: visible; animation-duration: 1.4s; animation-name: bounceInUp;">
+                        <div class="box">
+                            <div class="member" style="background: #fceef3;"><img class="rounded" width="100%" height="270px" src="{{ asset('uploads/'~actu.image~'') }}" alt="" /></div>
+                            <br>
+                            <h4 class="title"><a href="{{ path('show_front',{'id':actu.id }) }}">{{ actu.titre }}</a></h4>
+                            <h6 style="font-size:13.28px;" > <i class="fa fa-list-alt"></i> {{ actu.idCat.nomCategorie }}</h6>
+                            <h5 style="font-size:13.28px;" > <i class="fa fa-clock-o"></i> Publié le {{ actu.datePublication|localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") }}</h5>
+                            <p class="description">{{ actu.description|length > 50 ? actu.description|slice(0, 50) ~ '  ...' : actu.description }}</p>
+                            <a href="{{ path('show_front',{'id':actu.id }) }}" class="btn btn-primary btn-sm">Lire la suite</a>
+                            <br>
+
+                            <br><br>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

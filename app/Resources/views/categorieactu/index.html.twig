@@ -21,6 +21,22 @@
     </div>
 {% endblock %}
 {% block content %}
+<div class="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile" id="kt_page_portlet">
+        <div class="kt-portlet__head kt-portlet__head--lg" style="">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Liste Des Catégories
+                </h3>
+            </div>
+            <div class="kt-portlet__head-toolbar">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-brand"
+                            onclick="location.href='{{ path('categorieactu_new') }}' ">
+                        <i class="la la-plus"></i>
+                        <span class="kt-hidden-mobile">Ajouter une Catégorie</span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
 <div class="kt-portlet__body">
 
@@ -54,12 +70,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('categorieactu_new') }}">Créer une nouvelle Catégorie</a>
-        </li>
-    </ul>
 </div>
 {% endblock %}
 {% block javascripts %}

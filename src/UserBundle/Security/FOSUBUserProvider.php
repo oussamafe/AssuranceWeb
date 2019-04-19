@@ -12,6 +12,7 @@ namespace UserBundle\Security;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\User;
 
 
 // Source: https://gist.github.com/danvbe/4476697
@@ -47,6 +48,9 @@ class FOSUBUserProvider extends BaseClass {
         $data = $response->getResponse();
         $username = $response->getUsername();
         $email = $response->getEmail() ? $response->getEmail() : $username;
+        $first_name = $response->getFirstName();
+        $last_name = $response->getLastName();
+        $birthday = $response->getResponse();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
 
         // If the user is new
@@ -56,7 +60,7 @@ class FOSUBUserProvider extends BaseClass {
             $setter_id = $setter . 'Id';
             $setter_token = $setter . 'AccessToken';
             // create new user here
-            $user = $this->userManager->createUser();
+            $user = new User();
             $user->$setter_id($username);
             $user->$setter_token($response->getAccessToken());
 
@@ -66,6 +70,10 @@ class FOSUBUserProvider extends BaseClass {
             $user->setEmail($email);
             $user->setPassword($username);
             $user->setEnabled(true);
+            $user->setLastName($last_name);
+            $user->setFirstName($first_name);
+            $user->setGender('Homme');
+            $user->setAddress('Borj Louzir');
             $this->userManager->updateUser($user);
             return $user;
         }

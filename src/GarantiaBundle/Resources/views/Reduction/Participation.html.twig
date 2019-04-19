@@ -1,0 +1,240 @@
+{% extends 'base.html.twig' %}
+{% block test %}
+{% endblock %}
+{% block content %}
+    <section id="intro1" class="clearfix">
+    </section>
+    <br> <br> <div class="grid-container" >
+    <section>
+    <div class="container" style="display: grid; padding-right: 50px;  padding-left: 150px;">
+        <span style="color:#D68910;font-weight:lighter;font-family: proxima-nova">
+       <div style="display: grid; padding-right: 50px;  padding-left: 50px;">
+        <h4><b>Nos evenements</b></h4>
+       </div>
+            </span>
+        {% for evenement in evenements %}
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+
+                        <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                            <div style="display: block; padding-right: 50px;  padding-left: 60px;">  <h4> {{evenement.nom}}</h4>    </div>
+
+                            <img src="{{ asset('uploads/images/products/'~evenement.imageName~'') }}" height="200px" width="280px">
+
+                        </div>
+                    </div>
+                            <div class="flip-card-back">
+
+                                    <br> <br> <br>
+                              <p> {{ evenement.description }} </p>
+                                <p> {{ evenement.nbPlaces }} places disponibles </p>
+                             </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+                  <tr>
+                      <th>Lieu : </th>
+                      <td>{{ evenement.lieu}}   </td>   <i class="fas fa-map"></i>
+                  </tr>
+
+                 <br>
+                <tr>
+                     <th>Debut : </th>
+                      <td>{{ evenement.hDebut|date("h/i/sa") }}   </td> <i class="fas fa-clock"></i>
+                </tr>
+                <br>
+                <tr>
+                    <th>Fin :</th>
+                    <td>{{ evenement.hFin|date("h/i/sa")}}</td>     <i class="fas fa-clock"></i>
+                </tr>
+                <br>
+                <tr>
+                    <th>Date</th>
+                     <td>{{ evenement.date |date("m/d/Y")}}</td>      <i class="fas fa-calendar"> </i>
+                </tr>
+                {% if  (evenement.nbPlaces <= 0) %}
+                    Evenement Complet <i class="fas fa-check"></i>
+
+                    {% else %}
+
+                {% if (p.VerifierParticipation(evenement.id,u))==null %}
+              <div style="display: block; padding-right: 50px;  padding-left: 70px;">
+               <a href="{{ path('_participer',{'event':evenement.id}) }}" class="btn btn-outline-hover-warning">
+                   <div class="kt-section__content kt-section__content--solid">
+                       <button type="button" class="btn btn-outline-hover-danger btn-pill">Participer</button>&nbsp;
+                   </div>
+                    </a>
+              </div>
+                    <div class="flexbox">
+
+                        <div class="fav-btn">
+                            <span href="" class="favme dashicons dashicons-heart"></span>
+                        </div>
+
+                    </div>
+                    {% else %}
+                   Inscrit <i class="fas fa-check"></i>
+
+                {% endif %}
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    </div>
+    </section>
+    <section>
+    <div class="container" style="display: grid; padding-right: 50px;  padding-left: 300px;">
+        {% for evenement in evenements2 %}
+        <span style="color:#D68910;font-weight:bold">
+        <div  style="display: grid; padding-right: 50px;  padding-left: 20px;">
+            <h4 ><b>Evenement le plus proche</b></h4>
+        </div>
+        </span>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+
+                        <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                            <div style="display: block; padding-right: 50px;  padding-left: 60px;">  <h4> {{evenement.nom}}</h4>    </div>
+
+                            <img src="{{ asset('uploads/images/products/'~evenement.imageName~'') }}" height="200px" width="280px">
+
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+
+                        <br> <br> <br>
+                        <p> {{ evenement.description }} </p>
+                        <p> {{ evenement.nbPlaces }} places disponibles </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+                    <tr>
+                        <th>Lieu : </th>
+                        <td>{{ evenement.lieu}}</td>   <i class="fas fa-map"></i>
+                    </tr>
+
+                    <br><tr>
+                        <th>Debut : </th>
+                        <td>{{ evenement.hDebut|date("h/i/sa") }}</td>   <i class="fas fa-calendar"></i>
+                    </tr>
+                    <br>
+                    <tr>
+                        <th>Fin :</th>
+                        <td>{{ evenement.hFin|date("h/i/sa")}}</td>     <i class="fas fa-clock"></i>
+                    </tr>
+                    <br>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ evenement.date |date("m/d/Y")}}</td>     <i class="fas fa-clock"></i>
+                    </tr>
+                {% if  (evenement.nbPlaces <= 0) %}
+                   Evenement Complet <i class="fas fa-check"></i>
+                {% else %}
+
+                    {% if (p.VerifierParticipation(evenement.id,u))==null %}
+                        <div style="display: block; padding-right: 50px;  padding-left: 70px;">
+                            <a href="{{ path('_participer',{'event':evenement.id}) }}" class="btn btn-outline-hover-warning">
+                                <div class="kt-section__content kt-section__content--solid">
+                                    <button type="button" class="btn btn-outline-hover-danger btn-pill">Participer</button>&nbsp;
+                                </div>
+                            </a>
+
+                        </div>
+                    {% else %}
+                    <br> Inscrit <i class="fas fa-check"></i>
+                    {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+     </div>
+                <section>
+
+                   <div class="container" style="display: grid; padding-right: 50px;  padding-left:30px;">
+                          <span style="color:#D68910;font-weight:bold">
+                       <div  style="display: grid; padding-right: 50px;  padding-left: 20px;">
+                           <h4><b>Evenement le plus succés</b></h4>
+                       </div>
+                          </span>
+                    {% for evenement in evenements3 %}
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+
+                                    <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                        <div style="display: block; padding-right: 50px;  padding-left: 60px;">  <h4> {{evenement.nom}}</h4>    </div>
+
+                                        <img src="{{ asset('uploads/images/products/'~evenement.imageName~'') }}" height="200px" width="280px">
+
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+
+                                    <br> <br> <br>
+                                    <p> {{ evenement.description }} </p>
+                                    <p> {{ evenement.nbPlaces }} places disponibles </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+                            <tr>
+                                <th>Lieu : </th>
+                                <td>{{ evenement.lieu}}   </td>   <i class="fas fa-map"></i>
+                            </tr>
+
+                            <br>
+                            <tr>
+                                <th>Debut : </th>
+                                <td>{{ evenement.hDebut|date("h/i/sa") }}   </td> <i class="fas fa-clock"></i>
+                            </tr>
+                            <br>
+                            <tr>
+                                <th>Fin :</th>
+                                <td>{{ evenement.hFin|date("h/i/sa")}}</td>     <i class="fas fa-clock"></i>
+                            </tr>
+                            <br>
+                            <tr>
+                                <th>Date</th>
+                                <td>{{ evenement.date |date("m/d/Y")}}</td>      <i class="fas fa-calendar"> </i>
+                            </tr>
+                            {% if  (evenement.nbPlaces <= 0) %}
+                                Evenement Complet <i class="fas fa-check"></i>
+
+                            {% else %}
+
+                                {% if (p.VerifierParticipation(evenement.id,u))==null %}
+                                    <div style="display: block; padding-right: 50px;  padding-left: 70px;">
+                                        <a href="{{ path('_participer',{'event':evenement.id}) }}" class="btn btn-outline-hover-warning">
+                                            <div class="kt-section__content kt-section__content--solid">
+                                                <button type="button" class="btn btn-outline-hover-danger btn-pill">Participer</button>&nbsp;
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                {% else %}
+                                    Inscrit <i class="fas fa-check"></i>
+
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                    {% endfor %}
+                </div>
+                </section>
+
+
+{% endblock %}
+
+
+ {% block footer %}
+{% endblock %}

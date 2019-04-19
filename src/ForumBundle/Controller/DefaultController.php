@@ -56,15 +56,15 @@ class DefaultController extends Controller
             $em->flush();
 
             //send messages tel
-            $basic  = new \Nexmo\Client\Credentials\Basic('b6885d8d', 'lMQmAeMapbtB8faz');
+            $basic  = new \Nexmo\Client\Credentials\Basic('14247ff1', 'RRWje45LeVZm3sWg');
             $client = new \Nexmo\Client($basic);
 
-       /*     $message = $client->message()->send([
-                'to' => '21627651140',
+           $message = $client->message()->send([
+                'to' => '21629653956',
                 'from' => 'Nexmo',
                 'text' => 'Votre Forum a été ajouté avec success !'
             ]);
-*/
+
             $request->getSession()
                 ->getFlashBag()
                 ->add('success', 'Le forum a été ajouté avec succées ...!');

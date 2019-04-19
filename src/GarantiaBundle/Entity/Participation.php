@@ -142,7 +142,7 @@ class Participation
     /**
      * Set idParticipant
      *
-     * @param \UserBundle\Entity\User $idParticipant
+     * @param \UserBundle\Entity\FUser $idParticipant
      *
      * @return Participation
      */
@@ -156,7 +156,7 @@ class Participation
     /**
      * Get idParticipant
      *
-     * @return \UserBundle\Entity\User
+     * @return \AppBundle\Entity\User
      */
     public function getIdParticipant()
     {
