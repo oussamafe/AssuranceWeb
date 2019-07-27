@@ -1,0 +1,49 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+
+    <div id ="div" style="margin-top: 45px"   >
+        <div class="text-center">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="objet">L'email</th>
+                    <th scope="contenu">Le contenu</th>
+                    <th>son etat</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for post in posts %}
+                    <tr class="table-active">
+                        <td>{{ post.mail }}</td>
+                        <td>{{ post.id }}</td>
+                        {%  if post.etat =='en attente' %}
+                            <td> <a href="{{ absolute_url(asset('')) }}app_dev.php/repondre/{{ post.id}}">
+                                    <button class="btn" style="background: red ; color: white;"><b>En Attente  </b>
+                                   <i class="fa fa-edit"></i>
+                                </button></a></td>
+                        {% endif %}
+                    {%  if post.etat =='repondu' %}
+
+                            <td> <button class="btn" style="background: green ; color: white;"  ><b>Repondu</b></button> </td>
+                    {% endif %}
+
+
+
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>no records !!!</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block test %}
+{% endblock %}
+{% block content %}
+    <div id="div">
+
+    <script src="{{ asset ('jquery/jquery-3.3.1.js') }}"></script>
+    <section id="intro1" class="clearfix">
+    </section>
+<div class="kt-login__signin">
+    <div class="kt-login__head">
+        <h3 class="kt-login__title">Se Connecter</h3>
+    </div>
+
+    <form class="kt-form" method="post">
+
+        <div class="input-group">
+            <input class="form-control" placeholder="username" type="text" id="username"
+                   name="username"  required="required" autocomplete="username">
+        </div>
+        <div class="input-group">
+            <input class="form-control" placeholder="password" type="password" id="password"
+                   name="password"  required="required"  autocomplete="username">
+        </div>
+
+        <div class="kt-login__actions">
+            <input type="submit" id="_submit" class="btn btn-primary"
+                    name="_submit" value="se connecter">
+        </div>
+    </form>
+    {% for post in posts %}
+        <label id="label2" num="{{ post.username }}"> </label>
+        <label id="label3" nom="{{ post.password }}"> </label>
+
+    {% endfor %}
+
+</div>
+    </div>
+
+    <script>
+        $("#_submit").click( function () {
+
+
+            var username = $('#username').val();
+            var password = $('#password').val();
+            var label1 = $('#label2');
+            var user = label1.attr('num');
+            var label2 = $('#label3');
+            var pwd = label2.attr('nom');
+            var l1 = username.length;
+            var l2 = password.length;
+
+
+            if (!username.match(user) || !password.match(pwd)) {
+
+                alert('Mot de passe ou username incorrectes veuillez reessayer ');
+
+            } else {
+
+              window.location.href='http://localhost/version1/piecemoto/piecemoto/web/app_dev.php/afficherp';
+              return false ;
+
+
+            }
+        })
+
+
+
+    </script>
+{% endblock %}

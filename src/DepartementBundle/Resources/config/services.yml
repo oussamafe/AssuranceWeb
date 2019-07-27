@@ -1,4 +1,0 @@
-services:
-#    departement.example:
-#        class: DepartementBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

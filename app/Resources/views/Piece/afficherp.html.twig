@@ -1,0 +1,80 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+
+
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <a href="{{ path('ajouterp') }}" class ="btn btn-primary btn-xs" id="yes">Ajouter un produit</a>
+
+        </div>
+    </div>
+
+
+
+
+    <div id ="div" style="margin-top: 45px"   >
+        <div class="text-center">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="objet">code art</th>
+                    <th scope="contenu">designation</th>
+                    <th scope="etat">prix</th>
+                    <th scope="type">quantite</th>
+                    <th>action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for post in posts %}
+                    <tr class="table-active">
+                        <td>{{ post.codeArt }}</td>
+                        <td>{{ post.designation }}</td>
+                        <td>{{ post.prix }}</td>
+                        <td>{{ post.quantite }}</td>
+                        <td>
+                        <a href="{{ absolute_url(asset('')) }}app_dev.php/EditR/{{ post.id}}">
+                            <button class="btn" ><i class="fa fa-edit"></i></button></a>
+                         <button  class="btn" data-toggle="modal" data-target="#examplemodal{{post.id}}"><i class="fa fa-trash"></i></button>
+
+                            <div class="modal fade" id="examplemodal{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p style="color: red">Voulez-vous supprimer ce produit ? {{ post.codeArt }} </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <a href="{{ absolute_url(asset('')) }}app_dev.php/DeleteP/{{post.id}}">
+                                                <button type="button" class="btn btn-primary">Supprimer</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>no records !!!</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+{%  endblock %}

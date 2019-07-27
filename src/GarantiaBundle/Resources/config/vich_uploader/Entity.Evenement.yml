@@ -1,8 +1,0 @@
-GarantiaBundle\Entity\Evenement:
-  imageFile:
-    mapping: product_image        # required
-    filename_property: imageName  # required
-    size: imageSize
-    mime_type: imageMimeType
-    original_name: imageOriginalName
-    dimensions: imageDimensions

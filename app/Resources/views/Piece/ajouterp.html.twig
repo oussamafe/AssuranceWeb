@@ -1,0 +1,22 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+    {{ oneup_uploader_endpoint('gallery') }}
+
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="js/jquery.fileupload.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function()
+        {
+            $('#fileupload').fileupload({});
+        });
+    </script>
+
+    <input id="fileupload" type="file" name="files[]" data-url="{{ oneup_uploader_endpoint('gallery') }}" multiple />
+    <a href="{{ path('afficherp') }}" class ="btn btn-primary btn-xs" id="yes">Annuler</a>
+
+{%  endblock %}

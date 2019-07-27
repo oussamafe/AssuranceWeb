@@ -2,27 +2,16 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@UserBundle/Resources/config/services.yml" }
-    - { resource: "@GarantiaBundle/Resources/config/services.yml" }
-    - { resource: "@DevisBundle/Resources/config/services.yml" }
-    - { resource: "@ForumBundle/Resources/config/services.yml" }
-    - { resource: "@AssuranceBundle/Resources/config/services.yml" }
-    - { resource: "@AgenceBundle/Resources/config/services.yml" }
+    - { resource: "@PieceBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: fr
-    facebook_client_id: 552671288545730
-    facebook_secret: 9f0952dbb5869500108d0c64cadb91fb
-    app.path.product_images: /uploads/images/products
-
+    locale: en
 
 framework:
     #esi: ~
-
-    translator: { fallbacks: ['%locale%'] }
-    templating: { engines: ['twig'] }
+    translator: ~
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -47,8 +36,6 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-    form_themes:
-      - 'bootstrap_3_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -73,154 +60,23 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
-#swiftmailer:
-    #transport: '%mailer_transport%'
-    #host: '%mailer_host%'
-    #username: '%mailer_user%'
-    #password: '%mailer_password%'
-    #spool: { type: memory }
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
 
 sensio_framework_extra:
    router:
         annotations: false
 
-ewz_recaptcha:
-    public_key:  6LdQIZsUAAAAAGdQS4DtJd2Tf4gro9_1ARZrcSyF
-    private_key: 6LdQIZsUAAAAAMD-U1SqN1kRfda98al18rrCqRkQ
-    # Not needed as "%kernel.default_locale%" is the default value for the locale key
-    locale_key:  %kernel.default_locale%
-    enabled: true
-
-hwi_oauth:
-    http_client:
-        verify_peer: false
-    # Define which firewalls will be used for oauth
-    # Usually, its only the main, but you can add it if you have a custom one
-    firewall_names: ["main"]
-    fosub:
-        username_iterations: 30
-        # Define in which columns of the fos_user table will be stored
-        # the access token of every resource_owner
-        properties:
-            facebook: facebook_id
-    # Define the resource_owners that your user can use to login into your app
-    # Note that the client_id and client_secret and key values are symfony parameters
-    # stored too in the config.yml from the previous step !
-    resource_owners:
-        facebook:
-            type:           facebook
-            client_id:      "%facebook_client_id%"
-            client_secret:  "%facebook_secret%"
-            infos_url:     "https://graph.facebook.com/me?fields=id,name,email,first_name,last_name,picture"
-            options:
-                csrf: true
-
-fos_user:
-    db_driver: orm
-    firewall_name: main
-    user_class: UserBundle\Entity\User
-    service:
-        mailer: fos_user.mailer.twig_swift
-    profile:
-      form:
-        type: UserBundle\Form\ProfileType
-    registration:
-        form:
-            type: UserBundle\Form\RegistrationType
-        confirmation:
-            enabled: true
-    from_email:
-        address: "support@garantia.tn"
-        sender_name: "Garantia"
 oneup_uploader:
-  orphanage:
-    maxage: 86400
-    directory: %kernel.cache_dir%/uploader/orphanage
-  mappings:
-    gallery:
-      frontend: dropzone # or any uploader you use in the frontend
-      root_folder: true
-      use_orphanage: true
-    albums:
-      frontend: dropzone # or any uploader you use in the frontend
-      root_folder: true
-      use_orphanage: true
-
-fos_comment:
-  db_driver: orm
-  class:
-    model:
-      comment: UserBundle\Entity\Comment
-      thread: UserBundle\Entity\Thread
-
-knp_snappy:
-  temporary_folder: %kernel.cache_dir%/snappy
-  pdf:
-    enabled:    true
-    binary:      "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
-    options:    []
-  image:
-    enabled:    true
-    binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
-    options:    []
-
-doc_doc_doc_nexmo:
-  api_key: "b6885d8d (Master)"
-  api_secret: "lMQmAeMapbtB8faz"
-
-#paginator
-knp_paginator:
-  page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
-  default_options:
-    page_name: page                 # page query parameter name
-    sort_field_name: sort           # sort field query parameter name
-    sort_direction_name: direction  # sort direction query parameter name
-    distinct: true                  # ensure distinct results, useful when ORM queries are using GROUP BY statements
-    filter_field_name: filterField  # filter field query parameter name
-    filter_value_name: filterValue  # filter value query parameter name
-  template:
-    pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'     # sliding pagination controls template
-    sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
-    filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
-
-vich_uploader:
-  db_driver: orm
-  mappings:
-    product_image:
-      uri_prefix:         '%app.path.product_images%'
-      upload_destination: '%kernel.root_dir%/../web%app.path.product_images%'
-nomaya_social:
-  buttons:
-    facebook:
-      url:            null
-      locale:         "fr_FR"
-      send:           false
-      width:          300
-      showFaces:      false
-      layout:         "button_count"
-    twitter:
-      url:            null
-      locale:         "fr"
-      message:        "Ravi de partager notre Evenement avec vous"
-      text:           "Tweet"
-      via:            "L'Equipe cartedevisitevirtuelle.fr"
-      tag:            "ttot"
-    googleplus:
-      url:            null
-      locale :        "fr"
-      size :          "medium"
-      annotation :    "bubble"
-      width :         300
-    linkedin:
-      url:            null
-      locale:         "fr_FR"
-      counter:        "right"
-    pinterest:
-      url:            null
-  links:
-    facebook:           "https://www.facebook.com/Barraakeka/"
-  theme:                  'default' # optional
-fos_message:
-  db_driver: orm
-  thread_class: GarantiaBundle\Entity\Threads
-  message_class: GarantiaBundle\Entity\Message
+    orphanage:
+        maxage: 86400
+        directory: %kernel.cache_dir%/uploader/orphanage
+    mappings:
+        gallery:
+            frontend: blueimp
+            root_folder: true
+            use_orphanage: true

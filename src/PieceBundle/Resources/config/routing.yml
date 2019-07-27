@@ -1,0 +1,30 @@
+piece_homepage:
+    path:     /
+    defaults: { _controller: PieceBundle:Default:index }
+afficher:
+    path:     /afficher
+    defaults: { _controller: PieceBundle:Default:index }
+login:
+    path:     /login
+    defaults: { _controller: PieceBundle:Default:login }
+ajouterp:
+    path:     /ajouterp
+    defaults: { _controller: PieceBundle:Default:ajouterp }
+afficherp:
+    path:     /afficherp
+    defaults: { _controller: PieceBundle:Default:afficherp }
+EditR:
+    path:     /EditR/{id}
+    defaults: { _controller: PieceBundle:Default:EditR }
+DeleteP:
+    path:     /DeleteP/{id}
+    defaults: { _controller: PieceBundle:Default:DeleteP }
+contact:
+    path:     /contact
+    defaults: { _controller: PieceBundle:Default:contact }
+
+repondre:
+    path:     /repondre/{id}
+    defaults: { _controller: PieceBundle:Default:repondre }
+
+

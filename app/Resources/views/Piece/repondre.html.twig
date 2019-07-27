@@ -1,0 +1,14 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block content %}
+
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+    <div class="form-group">
+        <label for="exampleInputEmail1">Reponse</label>
+        <textarea class="form-control" rows="3"></textarea>
+        <a href="" class ="btn btn-primary btn-xs" >Envoyer un mail</a>
+        <a href="{{ path('contact') }}" class ="btn btn-primary btn-xs" id="yes">Annuler</a>
+
+
+    </div>
+{% endblock %}

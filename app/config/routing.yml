@@ -1,55 +1,10 @@
-agence:
-    resource: "@AgenceBundle/Resources/config/routing.yml"
-    prefix:   /Agence
-
-assurance:
-    resource: "@AssuranceBundle/Resources/config/routing.yml"
-    prefix:   /Assurance
-
-forum:
-    resource: "@ForumBundle/Resources/config/routing.yml"
-    prefix:   /forum
-
-devis:
-    resource: "@DevisBundle/Resources/config/routing.yml"
-    prefix:   /devis
-
-garantia:
-    resource: "@GarantiaBundle/Resources/config/routing.yml"
+piece:
+    resource: "@PieceBundle/Resources/config/routing.yml"
     prefix:   /
-
-user:
-    resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /admin/
 
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /connect
-
-hwi_oauth_connect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
-    prefix:   /connect
-
-hwi_oauth_login:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /login
-
-facebook_login:
-    path: /connect/check-facebook
-
 oneup_uploader:
     resource: .
     type: uploader
-fos_comment_api:
-    type: rest
-    resource: "@FOSCommentBundle/Resources/config/routing.yml"
-    prefix: /api
-    defaults: { _format: html }
-fos_message:
-    resource: "@FOSMessageBundle/Resources/config/routing.xml"
-    prefix: /message

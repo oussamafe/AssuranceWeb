@@ -17,8 +17,7 @@
         <link href="{{ asset('front/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
         <link href="{{ asset('front/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
         <link href="{{ asset('front/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('front/css/style2.css') }}" rel="stylesheet">
-        <script src="{{ asset('jQuery/jquery-3.3.1.js') }}"></script>
+
         <!-- Main Stylesheet File -->
         <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('front/img/favicon.ico') }}"/>
@@ -32,36 +31,7 @@
         <div id="topbar">
             <div class="container">
                 <div class="social-links">
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                        {% if not ( 'facebook' in app.user.username ) %}
-
-                            {{ 'layout.logged_in_as'|trans ({'%username%': app.user.username}, 'FOSUserBundle') }}
-
-                        {% else %}
-
-                            {{ 'layout.logged_in_as'|trans ({'%username%': app.user.firstName}, 'FOSUserBundle') }}
-                            {{ app.user.lastName }}
-
-                        {% endif %}
-
-                        | <a href="{{ path('fos_user_profile_show') }}">
-                        Profile
-                        <i class="fa fa-lock"></i>
-                    </a>
-                        {% for role in app.user.roles %}
-                            {% if  role == "ROLE_SUPER_ADMIN" %}
-                                | <a href="{{ path('user_homepage') }}">
-                                Admin Dashboard
-                                <i class="fa fa-lock"></i>
-                            </a>
-                            {% endif %}
-                        {% endfor %} |
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'| trans({}, 'FOSUserBundle') }}
-                            <i class="fa fa-sign-in"></i>
-                        </a>
-                    {% endif %}
                     <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                     <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                     <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
@@ -79,56 +49,10 @@
 
             <nav class="main-nav float-right d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="{{ path('garantia_homepage') }}">Accueil</a></li>
-
-
-                    <li class="drop-down"><a href="#">Actualités</a>
-                        <ul>
-                            <li><a href="{{ path('show_front_all') }}">Toutes Les Actualités</a></li>
-                            {{ render(controller('GarantiaBundle\\Controller\\CategorieController::recentArticles'
-                            )) }}
-                        </ul>
-                    </li>
-                    <li><a href="{{ path('_ShowR') }}">Devis</a></li>
-                    <li><a href="{{ path('_AfficherEventFront') }} ">Evenements</a></li>
-
-                    <li class="drop-down"><a href="#">Forums</a>
-                        <ul>
-                            <li><a href="{{ path('forum_homepage') }}">A la une</a></li>
-                            {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <li><a href="{{ path('add_form')}}">Ajouter Forum</a></li>
-                                <li><a href=" {{ path('mesForums', { 'id': app.user.id }) }}" >Mes Forums</a></li>
-                                <li><a href="{{ path('participe') }}" >Forums que je participe</a></li>
-                                <li><a href="{{ path('chart') }}" >Stats de mes Forums</a></li>
-                            {% endif %}
-
-                        </ul>
-                    </li>
-                    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li>
-                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}
-                                </a></li>
-                    {% endif %}
-                    {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a href="{{ path('show_front_Reclamation') }}">Reclamation</a>
-                        <li class="drop-down"><a href="#">Mes Incidents</a>
-                            <ul>
-
-
-                                <li><a href="{{ path('_ajouterincident') }}">Ajouter un Incident</a></li>
-                                <li><a href="{{ path('_afficherincident') }}">Gérer mes Incidents</a></li>
-                                <li><a href="{{ path('afficherrdz') }}">Vérifier mon rendez-vous</a></li>
-                                <li><a href="{{ path('_afficherjugement') }}">Vérifier le jugement</a></li>
-                            </ul>
-                        </li>
-                    {% endif %}
-
-
-                    <li>
-                        {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <a href="{{ path('fos_user_registration_register') }}">Créer Compte</a>
-                        {% endif %}
-                    </li>
+                    <li class="active"><a href="#intro">Accueil</a></li>
+                    <li><a href="#about">Nos Articles </a></li>
+                    <li><a href="#services">Contact</a></li>
+                    <li><a href="{{ path('login') }}">Se Connecter</a></li>
                 </ul>
             </nav><!-- .main-nav -->
 
@@ -136,7 +60,8 @@
     </header>
 
 {% endblock %}
-
+{% block test %}
+{% endblock %}
 
 {% block content %}
     <section id="intro1" class="clearfix">
@@ -144,13 +69,6 @@
 {% endblock %}
 {% block footer %}
 
-    <section id="testimonials">
-        <div class="container">
-            <div align="middle">
-        {{ render(controller('GarantiaBundle\\Controller\\PubController::recentArticles')) }}
-            </div>
-        </div>
-    </section>
     <footer id="footer" class="section-bg">
         <div class="container">
             <div class="copyright">
